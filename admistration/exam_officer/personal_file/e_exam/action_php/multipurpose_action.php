@@ -608,7 +608,6 @@
 
         // pupils school online examination editing ????????????????????
 
-
         if ($_POST['action'] == 'pupil school online exam edit') {
 
             $id = mysqli_real_escape_string($conn, $_POST['id']);

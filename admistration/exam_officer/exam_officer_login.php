@@ -101,8 +101,9 @@
                             $('#reg_btn').attr('disabled', false);
 
                             if (data == 'send') {
+                                window.location.assign("exam_officer_home.php");
                                 
-                                window.location.assign("exam_officer_idcode_verification.php");
+                                // window.location.assign("exam_officer_idcode_verification.php");
                             }else{
 
                                 error_handler(data);

@@ -127,10 +127,6 @@
 
             </div>
 
-
-            
-
-        
             <div class="submit">
                 <input type="submit" name="submit" id="submit" value="submit">
             </div>
@@ -163,17 +159,6 @@
                     $('#session').css('border-color', '#444');
                 }
             })
-
-
-
-            
-
-
-
-
-
-
-
 
         })
     </script>

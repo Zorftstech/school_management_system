@@ -107,7 +107,7 @@
 
         <div id="aim_img">
 
-            <img src="./image/school/four_img.jpg" alt="">
+            <img src="./image/school/spring.jpeg" alt="">
         </div>
 
         <div id="aim_content">

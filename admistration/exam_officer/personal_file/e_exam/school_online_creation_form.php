@@ -157,11 +157,6 @@
                         </select>
                     </div>
 
-
-                    
-
-                    
-
                 </div>
 
                 <div class="two">
@@ -195,20 +190,10 @@
                         
                     </div>
 
-                    
-
                 </div>
-
-
-
-                
 
             </div>
 
-
-            
-
-        
             <div class="submit">
                 <input type="submit" name="submit" id="submit" value="create">
             </div>
@@ -242,9 +227,6 @@
                 }
             })
 
-
-
-            
 
             // submit online exam cration through ajax :::::::::::::::::
 

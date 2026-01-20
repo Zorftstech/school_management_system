@@ -1,9 +1,9 @@
 <?php
-    session_start();
-    if (!isset($_SESSION['school_pwd'])) {
+    // session_start();
+    // if (!isset($_SESSION['school_pwd'])) {
     
-            exit();
-    }
+    //         exit();
+    // }
     
 ?>
 
@@ -105,8 +105,8 @@
                             $('#reg_btn').attr('disabled', false);
 
                             if (data == 'send') {
-                                
-                                window.location.assign("formaster_idcode_verification.php");
+                                window.location.assign("formaster_home.php");
+                                // window.location.assign("formaster_idcode_verification.php");
                             }else{
 
                                 error_handler(data);

@@ -6,7 +6,6 @@
         header("location: director_home.php");
     }
     
-
     $error ='';
 
     if (isset($_GET['process'])) {

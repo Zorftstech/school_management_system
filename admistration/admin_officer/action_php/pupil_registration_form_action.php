@@ -83,11 +83,11 @@
                         $image_new_name = '../../../image/pupil/'.$first_name.'.'.$unique.'.'.$image_exten;
                         $location = move_uploaded_file($image_temp, $image_new_name);
                         
-                        if (!$location) {
+                        // if (!$location) {
                             
-                            $out = 'image fail to upload retry';
-                            header("location: ../pupil_registration_form.php?result=$out");
-                        }else{
+                        //     $out = 'image fail to upload retry';
+                        //     header("location: ../pupil_registration_form.php?result=$out");
+                        // }else{
 
                             $reg_date = date("Y/m/d");
                             $status = 'active';
@@ -108,7 +108,7 @@
                                 $out = 'fail to register';
                                 header("location: ../pupil_registration_form.php?result=$out");
                             }
-                        }
+                        // }
 
                     }
 

@@ -99,8 +99,10 @@
                             $('#reg_btn').attr('disabled', false);
 
                             if (data == 'send') {
+                                alert("send")
                                 
-                                window.location.assign("admin_officer_idcode_verification.php");
+                                window.location.assign("admin_officer_home.php");
+                                // window.location.assign("admin_officer_home.php");
                             }else{
 
                                 error_handler(data);

@@ -44,53 +44,61 @@ if (isset($_POST['submit'])) {
 
                 $query_two_run = mysqli_query($conn, $query_two);
 
-                if ($query_two_run) {
+                if ($query_two_run) { 
+                    // $school_mail = "eduspringofgrace@gmail.com";
+                    // $name = "email varification";
+                    // $subject = "code to varified ur email before login as principal";
+                    // $body = "copy this code  ".$id_code." into space provide and login";
+                    // $pwd = "08104322128";
+                    
+                    // require_once "phpmailer/PHPMailer.php";
+                    // require_once "phpmailer/SMTP.php";
+                    // require_once "phpmailer/Exception.php";
+                    
+                    // $mail = new PHPMailer();
 
+                    // $mail->IsSMTP();  // telling the class to use SMTP
+                    // //$mail->SMTPDebug = 2;
+                    // $mail->Mailer = "smtp";
+                    // // $mail->Host = "ssl://smtp.gmail.com";
+                    // // //$mail->Port = 587;
+                    // // $mail->Port = 465;
+                    // $mail->Host = "springofgracegroupofschool.com.ng";
+                    // $mail->Port = 587;
+                    // $mail->SMTPAuth = true; // turn on SMTP authentication
+                    
+
+                    // // $mail->Username = "eduspringofgrace@gmail.com"; // SMTP username
+                    // // $mail->Password = "qcygveozmfpfacjw"; // SMTP password
+                    // $mail->Username = "noreply@springofgracegroupofschool.com.ng"; // SMTP username
+                    // $mail->Password = "Akin08037768663"; // SMTP password
+                    // //$Mail->Priority = 1;
+                    // $mail->AddAddress($principal_email);
+                    // // $mail->SetFrom($school_mail, $name);
+                    // $mail->SetFrom('noreply@springofgracegroupofschool.com.ng');
+                    // //$mail->AddReplyTo('akinyemisaheedwale@gmail.com');
+                    // $mail->Subject  = $subject;
+                    // $mail->Body     = $body;
+                    // $mail->WordWrap = 50;
+
+                    // if ($mail->send()) {
+
+                    //     $_SESSION['principal_login_email'] = $principal_email;
+                        
+                    //     header("location: ../principal_idcode_verification.php");
+
+                        
+
+                    // }else{
+                        
+                    //     header("location: ../principal_login.php?process=fail to send code please resend");
+                    // }
+                    $_SESSION['principal_login_email'] = $principal_email;
+                    $_SESSION['principal_id_code'] = $row['id_code'];
                 
-                    
-                    $school_mail = "eduspringofgrace@gmail.com";
-                    $name = "email varification";
-                    $subject = "code to varified ur email before login as principal";
-                    $body = "copy this code  ".$id_code." into space provide and login";
-                    $pwd = "08104322128";
-                    
-                    require_once "phpmailer/PHPMailer.php";
-                    require_once "phpmailer/SMTP.php";
-                    require_once "phpmailer/Exception.php";
-                    
-                    $mail = new PHPMailer();
-
-                    $mail->IsSMTP();  // telling the class to use SMTP
-                    //$mail->SMTPDebug = 2;
-                    $mail->Mailer = "smtp";
-                    $mail->Host = "ssl://smtp.gmail.com";
-                    //$mail->Port = 587;
-                    $mail->Port = 465;
-                    $mail->SMTPAuth = true; // turn on SMTP authentication
-                    
-
-                    $mail->Username = "eduspringofgrace@gmail.com"; // SMTP username
-                    $mail->Password = "qcygveozmfpfacjw"; // SMTP password
-                    //$Mail->Priority = 1;
-                    $mail->AddAddress($principal_email);
-                    $mail->SetFrom($school_mail, $name);
-                    //$mail->AddReplyTo('akinyemisaheedwale@gmail.com');
-                    $mail->Subject  = $subject;
-                    $mail->Body     = $body;
-                    $mail->WordWrap = 50;
-
-                    if ($mail->send()) {
-
-                        $_SESSION['principal_login_email'] = $principal_email;
-                        
-                        header("location: ../principal_idcode_verification.php");
-
-                        
-
-                    }else{
-                        
-                        header("location: ../principal_login.php?process=fail to send code please resend");
-                    }
+                    header("location: ../principal_home.php");
+                }else {
+                    header("location: ../principal_login.php?process=fail to send code please resend");
                 }
                 
                 

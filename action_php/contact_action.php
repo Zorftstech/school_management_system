@@ -30,21 +30,22 @@
             
             $mail = new PHPMailer();
 
-            
-
             $mail->IsSMTP();  // telling the class to use SMTP
             //$mail->SMTPDebug = 2;
             $mail->Mailer = "smtp";
-            $mail->Host = "ssl://smtp.gmail.com";
-            //$mail->Port = 587;
-            $mail->Port = 465;
+            // $mail->Host = "ssl://smtp.gmail.com";
+            $mail->Host = "springofgracegroupofschool.com.ng";
+            $mail->Port = 587;
+            // $mail->Port = 465;
             $mail->SMTPAuth = true; // turn on SMTP authentication
             
-            $mail->Username = "eduspringofgrace@gmail.com"; // SMTP username
-            $mail->Password = "qcygveozmfpfacjw"; // SMTP password
-            //$Mail->Priority = 1;
+            // $mail->Username = "eduspringofgrace@gmail.com"; // SMTP username
+            // $mail->Password = "qcygveozmfpfacjw"; // SMTP password
+            $mail->Username = "noreply@springofgracegroupofschool.com.ng"; // SMTP username
+            $mail->Password = "Akin08037768663"; // SMTP password
+            
             $mail->AddAddress('eduspringofgrace@gmail.com');
-            $mail->SetFrom('eduspringofgrace@gmail.com');
+            $mail->SetFrom('noreply@springofgracegroupofschool.com.ng');
             //$mail->AddReplyTo('akinyemisaheedwale@gmail.com');
             $mail->Subject  = $subject;
             $mail->Body     = $message;

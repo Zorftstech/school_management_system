@@ -43,29 +43,30 @@ if (isset($_POST['submit'])) {
             $mail->IsSMTP();  // telling the class to use SMTP
             //$mail->SMTPDebug = 2;
             $mail->Mailer = "smtp";
-            $mail->Host = "ssl://smtp.gmail.com";
-            //$mail->Port = 587;
-            $mail->Port = 465;
+            // $mail->Host = "ssl://smtp.gmail.com";
+            // //$mail->Port = 587;
+            // $mail->Port = 465;
+            $mail->Host = "springofgracegroupofschool.com.ng";
+            $mail->Port = 587;
             $mail->SMTPAuth = true; // turn on SMTP authentication
             
-            $mail->Username = "eduspringofgrace@gmail.com"; // SMTP username
-            $mail->Password = "qcygveozmfpfacjw"; // SMTP password
+            // $mail->Username = "eduspringofgrace@gmail.com"; // SMTP username
+            // $mail->Password = "qcygveozmfpfacjw"; // SMTP password
+            $mail->Username = "noreply@springofgracegroupofschool.com.ng"; // SMTP username
+            $mail->Password = "Akin08037768663"; // SMTP password
+
             //$Mail->Priority = 1;
             $mail->AddAddress($email);
-            $mail->SetFrom($school_mail, $name);
+            // $mail->SetFrom($school_mail, $name);
+            $mail->SetFrom('noreply@springofgracegroupofschool.com.ng');
             //$mail->AddReplyTo('akinyemisaheedwale@gmail.com');
             $mail->Subject  = $subject;
             $mail->Body     = $body;
             $mail->WordWrap = 50;
 
-
             if ($mail->send()) {
 
-                
-                
                 header("location: ../formaster_password_reset.php?token=$pwd_token");
-
-                
 
             }else{
                 
@@ -76,7 +77,6 @@ if (isset($_POST['submit'])) {
 
             exit('fail. resend your data');
         }
-        
         
     }else{
 

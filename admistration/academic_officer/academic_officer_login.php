@@ -100,8 +100,11 @@
                             $('#reg_btn').attr('disabled', false);
 
                             if (data == 'send') {
+
+                             
                                 
-                                window.location.assign("academic_officer_idcode_verification.php");
+                                // window.location.assign("academic_officer_idcode_verification.php");
+                                window.location.assign("academic_officer_home.php");
                             }else{
 
                                 error_handler(data);

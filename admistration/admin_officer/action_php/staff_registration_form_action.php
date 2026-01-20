@@ -59,11 +59,11 @@
 
                 $location = move_uploaded_file($image_tmp, $image_source);
 
-                if (!$location) {
+                // if (!$location) {
                     
-                    $output = 'image fail to upload';
-                    header("location: ../staff_registration_form.php?result=$output");
-                }else{
+                //     $output = 'image fail to upload';
+                //     header("location: ../staff_registration_form.php?result=$output");
+                // }else{
 
                     $cv_explode =  explode('.', $cv_name);
 
@@ -85,17 +85,13 @@
 
                         $location_cv = move_uploaded_file($cv_tmp, $cv_source);
 
-                        if (!$location_cv) {
+                        // if (!$location_cv) {
                     
-                            $output = 'cv fail to upload';
-                            header("location: ../staff_registration_form.php?result=$output");
+                        //     $output = 'cv fail to upload';
+                        //     header("location: ../staff_registration_form.php?result=$output");
 
-                        }else {
+                        // }else {
         
-
-
-
-
                             $id_code = 8770;
                             $status = 'active';
                             $pwd = '7ygasaj';
@@ -116,9 +112,9 @@
                                 $output = 'fail to register';
                                 header("location: ../staff_registration_form.php?result=$output");
                             }
-                        }
+                        // }
                     }
-                }
+                // }
             }
 
         }

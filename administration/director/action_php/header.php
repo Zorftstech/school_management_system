@@ -3,7 +3,13 @@
 session_start();
 if(!isset($_SESSION['director_id_code']))
 {
+    header('location: director_login.php');
     exit();
+}
+
+if (!isset($page_title)) {
+
+    $page_title = 'Overview';
 }
 ?>
 
@@ -15,177 +21,88 @@ if(!isset($_SESSION['director_id_code']))
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>director page</title>
+    <title>director — <?php echo htmlspecialchars($page_title); ?></title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <script src="../../javascript/jquery.js"></script>
+    <link rel="stylesheet" href="css/director_dashboard_css.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
-    <style>
-        *{
-            padding: 0;
-            margin: 0;
-            box-sizing: border-box;
-            list-style: none;
-            text-decoration: none;
-        }
-
-        a, button{
-            color: #fff;
-            background-color: transparent;
-            border: none;
-            text-transform: capitalize;
-            font-family: Arial, Helvetica, sans-serif;
-            letter-spacing: 1px;
-        }
-
-        button:focus{
-            outline: none;
-        }
-
-        #container{
-            background-color: #000;
-        }
-
-        #links_container{
-            width: 90%;
-            margin-left: 5%;
-            display: flex;
-            justify-content: space-between;
-            
-        }
-
-        button, .home{
-            padding: 10px 0;
-        }
-
-        .home a:hover{
-            color: #fff;
-            text-decoration: none;
-            opacity: 0.7s;
-        }
-
-        #img, img{
-            width: 100%;
-        }
-
-        body{
-    background-color: #eef0ef;
-}
-
-#form_container{
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-content: center;
-    
-    
-}
-
-.form_element{
-    background-color: #fff;
-    padding: 40px 20px;
-    width: 50%;
-    border-radius: 10px;
-}
-
-form h2 {
-    text-transform: capitalize;
-    font-family: sans-serif;
-    font-weight: 60;
-    font-size: 20px;
-    margin-bottom: 30px;
-    color: #5fcf80;
-    text-align: center;
-}
-
-
-form p{
-    text-align: center;
-    color: #012970;
-}
-
-input{
-    display: block;
-}
-
-#pwd, #email, #id_code, #user{
-    margin-bottom: 40px;
-    border: none;
-    line-height: 25px;
-    border-bottom: 1px solid #444444;
-    width: 100%;
-}
-
-#reg_btn{
-    width: 100%;
-    text-align: center;
-    border: none;
-    background-color: #5fcf80;
-    padding: 10px 0;
-    color: #fff;
-    text-transform: capitalize;
-    border-radius: 20px;
-    letter-spacing: 1px;
-    cursor: pointer;
-}
-
-#pwd:focus{
-    outline: none;
-    border-bottom: 1px solid #5fcf80;
-}
-
-form p {
-    font-family: sans-serif;
-    font-size: 15px;
-    margin-bottom: 30px;
-    color: tomato;
-    text-align: center;
-}
-
-.home a img{
-    width: 30px;
-    height: 30px;
-    border-radius: 100%; 
-}
-    </style>
 </head>
 <body>
 
-    <div id="container">
-        <div id="links_container">
+    <div class="dash" id="dash">
 
+        <aside class="dash-sidebar">
 
-            <div class="home">
-                <a href="director_home.php"><img src="../../image/school/logo.jpg" alt="logo"></a>
-            </div>
-            
-            <div id="btn_group">
-
-                <div class="btn-group">
-                    <button type="button" class=" dropdown-toggle dropdown-toggle-split" data-toggle="dropdown">
-                        principal
-                    </button>
-                    <div class="dropdown-menu">
-                    <a class="dropdown-item" href="principal_registration.php">registration</a>
-                    <a class="dropdown-item" href="principal_details.php">details</a>
-                    </div>
-                </div>
-                
-                <div class="btn-group">
-                    <button type="button" class="dropdown-toggle dropdown-toggle-split" data-toggle="dropdown"> others
-                    </button>
-                    <div class="dropdown-menu">
-                    
-                    <a class="dropdown-item" href="action_php/director_logout_action.php">logout</a>
-                    </div>
-                </div>
-
+            <div class="dash-brand">
+                <img src="../../image/school/logo.jpg" alt="school logo">
+                <span>Director
+                    <small>Spring of Grace</small>
+                </span>
             </div>
 
-        </div>
+            <nav class="dash-nav">
 
-    </div>
+                <p class="dash-nav-label">School</p>
+
+                <a href="director_home.php">
+                    <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+                    Overview
+                </a>
+
+                <p class="dash-nav-label">Manage</p>
+
+                <a href="principal_details.php">
+                    <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a8 8 0 0 1 16 0v1"/></svg>
+                    Principals
+                </a>
+
+                <a href="principal_registration.php">
+                    <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="10" cy="8" r="4"/><path d="M3 21v-1a7 7 0 0 1 14 0v1"/><path d="M19 8v6"/><path d="M16 11h6"/></svg>
+                    Register principal
+                </a>
+
+                <a href="staff_overview.php">
+                    <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20v-1a6.5 6.5 0 0 1 13 0v1"/><circle cx="17.5" cy="9" r="2.5"/><path d="M15.5 14.5a5 5 0 0 1 6 5v0.5"/></svg>
+                    Staff &amp; admin
+                </a>
+
+                <a href="learners_overview.php">
+                    <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M12 4 2 9l10 5 10-5-10-5z"/><path d="M6 11.5V16c0 1.5 2.7 3 6 3s6-1.5 6-3v-4.5"/></svg>
+                    Students &amp; pupils
+                </a>
+
+                <a href="parents_enquiries.php">
+                    <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M4 5h16a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H8l-4 4V6a1 1 0 0 1 1-1z"/></svg>
+                    Parents &amp; enquiries
+                </a>
+
+            </nav>
+
+            <a class="dash-logout" href="action_php/director_logout_action.php">
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="M16 17l5-5-5-5"/><path d="M21 12H9"/></svg>
+                Log out
+            </a>
+
+        </aside>
+
+        <div class="dash-overlay" id="dash_overlay"></div>
+
+        <div class="dash-main">
+
+            <header class="dash-topbar">
+
+                <button class="dash-menu-btn" id="dash_menu_btn" type="button" aria-label="open menu">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M3 6h18"/><path d="M3 12h18"/><path d="M3 18h18"/></svg>
+                </button>
+
+                <h1><?php echo htmlspecialchars($page_title); ?></h1>
+
+                <div class="dash-user">
+                    <span class="dash-user-avatar">D</span>
+                    <span>Director</span>
+                </div>
+
+            </header>
+
+            <main class="dash-content">

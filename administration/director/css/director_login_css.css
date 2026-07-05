@@ -6,7 +6,8 @@
 }
 
 body{
-    background-color: #eef0ef;
+    background-color: #f7f6fb;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 
 #form_container{
@@ -16,24 +17,26 @@ body{
     flex-wrap: wrap;
     justify-content: center;
     align-content: center;
-    
-    
+
+
 }
 
 .form_element{
     background-color: #fff;
-    padding: 40px 20px;
+    padding: 40px 32px;
     width: 50%;
-    border-radius: 10px;
+    max-width: 420px;
+    border-radius: 12px;
+    border: 1px solid #e8e6f0;
+    box-shadow: 0 1px 2px rgba(31, 35, 48, 0.05);
 }
 
 form h2{
     text-transform: capitalize;
-    font-family: sans-serif;
-    font-weight: 60;
+    font-weight: 600;
     font-size: 20px;
     margin-bottom: 30px;
-    color: #5fcf80;
+    color: #5b21b6;
     text-align: center;
 }
 
@@ -48,7 +51,7 @@ input{
     margin-bottom: 40px;
     border: none;
     line-height: 25px;
-    border-bottom: 1px solid #444444;
+    border-bottom: 1px solid #c9c5d8;
     width: 100%;
 }
 
@@ -56,7 +59,7 @@ input{
     width: 100%;
     text-align: center;
     border: none;
-    background-color: #5fcf80;
+    background-color: #6d28d9;
     padding: 10px 0;
     color: #fff;
     text-transform: capitalize;
@@ -65,9 +68,13 @@ input{
     cursor: pointer;
 }
 
-#pwd:focus{
+#reg_btn:hover{
+    background-color: #5b21b6;
+}
+
+#pwd:focus, #email:focus, #id_code:focus{
     outline: none;
-    border-bottom: 1px solid #5fcf80;
+    border-bottom: 1px solid #7c3aed;
 }
 
 /* styling forgot password */
@@ -80,7 +87,7 @@ input{
 #forgot a{
     text-transform: capitalize;
     text-align: center;
-    color: #5fcf80;
+    color: #6d28d9;
     letter-spacing: 1px;
     text-decoration: none;
 }

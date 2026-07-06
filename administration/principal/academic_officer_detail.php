@@ -1,5 +1,7 @@
 <?php
 
+$page_title = 'Academic officers';
+
 include('header.php');
 
 ?>
@@ -13,6 +15,7 @@ include('header.php');
     <div class="card-header">
         <h3>Academic officer details</h3>
         <p id="error"></p>
+        <a class="btn-ghost" href="academic_officer_registration.php">Register new</a>
     </div>
 
 
@@ -77,7 +80,7 @@ include('header.php');
       
                 <!-- Modal Header -->
                 <div class="modal-header">
-                <h4 class="modal-title">Academic Officer Updata form</h4>
+                <h4 class="modal-title">Academic Officer Update form</h4>
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
 
@@ -221,7 +224,7 @@ include('header.php');
 
                success: function(data){
                    
-                   $('#update_btn').text('Updae');
+                   $('#update_btn').text('Update');
                    $('#update_btn').attr('disabled', false);
                    $('#error').text(data);
                    $('#form')[0].reset();

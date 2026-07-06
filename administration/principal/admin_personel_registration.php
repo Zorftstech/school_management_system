@@ -1,35 +1,65 @@
 <?php
 
-include('header.php');
-$error = '';
-if (isset($_GET['result'])) {
-    
-    $error = $_GET['result'];
-}
+    $page_title = 'Register admin personnel';
+
+    include('header.php');
+
+    $feedback = '';
+
+    if (isset($_GET['process'])) {
+
+        $feedback = $_GET['process'];
+    }
+
+    if (isset($_GET['result'])) {
+
+        $feedback = $_GET['result'];
+    }
 
 ?>
 
 
-<div id="form_container">
-        <div class="form_element">
-            <form action="action_php/admin_personel_registration_action.php" method="POST">
-                <div id="error_check">
-                    <span class="error"><?php echo $error; ?></span>
-                </div>
-                <h2>admin personel registration form</h2>
+<p class="page-intro">
+    Register a new admin personnel. They will receive a verification code by email and must
+    confirm it before they can log in to their portal.
+</p>
 
-                <input type="email" id="email" placeholder="Enter Email" required name="email">
 
-                <input type="text" id="user" placeholder="Enter Username" required name="user">
+<section class="panel form-card">
 
-                <input type="password" id="pwd" placeholder="Enter Password" required name="password">
+    <div class="panel-head">
+        <h2>Admin personnel details</h2>
+    </div>
 
-                <input type="submit" name="submit" id="reg_btn" value="submit">
+    <div class="panel-body">
 
-            </form>
-            <div style="text-align: center; margin-top: 10px;">
-            <a href="admin_personel_resend_email.php" style="color: #5fcf80;">resend email</a>
-            </div>
+        <form action="action_php/admin_personel_registration_action.php" method="POST">
+
+            <?php if ($feedback !== ''): ?>
+                <p class="form-feedback"><?php echo htmlspecialchars($feedback); ?></p>
+            <?php endif; ?>
+
+            <label for="email">Email address</label>
+            <input type="email" id="email" placeholder="name@school.edu.ng" required name="email">
+
+            <label for="user">Username</label>
+            <input type="text" id="user" placeholder="Choose a username" required name="user">
+
+            <label for="pwd">Password</label>
+            <input type="password" id="pwd" placeholder="Set a temporary password" required name="password">
+
+            <button type="submit" name="submit" class="btn-purple" value="submit">Register admin personnel</button>
+
+        </form>
+
+        <p class="form-note">
+            Verification email not delivered? <a href="admin_personel_resend_email.php">Resend it</a>
+            &nbsp;·&nbsp; <a href="admin_personel_detail.php">View all</a>
+        </p>
+
+    </div>
+
+</section>
 
 
 <?php

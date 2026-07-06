@@ -22,7 +22,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>principal login</title>
-    <link rel="stylesheet" href="css/principal_login_css.css" >
+    <link rel="stylesheet" href="css/principal_auth_css.css" >
     <style>
         form p{
             text-align: center;

@@ -27,7 +27,7 @@
 <div class="header_img_container">
 
     <div id="top_header">
-        <h2>spring of grace group of schools</h2>
+        <h2>Acadex</h2>
     </div>
 
     <div id="header_side">

@@ -2,7 +2,7 @@
     <div class="nav_container">
         <div class="nav_elemet">
             <div class="nav_link">
-                <h2><a href="index.php"><img src="image/school/logo.jpg" alt=""></a></h2>
+                <h2><a href="index.php"><img src="image/school/logo.jpg" alt="">Acadex</a></h2>
                 <div class="links">
                     <ul>
                         

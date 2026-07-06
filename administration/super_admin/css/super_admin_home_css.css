@@ -1,0 +1,290 @@
+/* super admin dashboard: kpi cards, charts, schools table, activity feed */
+
+
+/* shared section headings ................................................ */
+
+.section_head{
+    margin-bottom: 18px;
+}
+
+.section_head h2{
+    font-size: 16px;
+    text-transform: lowercase;
+    letter-spacing: 1px;
+    color: #0e1726;
+    font-weight: bold;
+}
+
+.section_head p{
+    font-size: 12px;
+    text-transform: lowercase;
+    letter-spacing: 1px;
+    color: #7a8494;
+    margin-top: 4px;
+}
+
+section{
+    margin-bottom: 35px;
+}
+
+
+/* kpi cards .............................................................. */
+
+#kpi_grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 15px;
+}
+
+.kpi_card{
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 18px 20px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+    border-top: 3px solid #5fcf80;
+}
+
+.kpi_icon{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    background-color: rgba(95, 207, 128, 0.15);
+    color: #2b7a4b;
+    font-size: 15px;
+    margin-bottom: 10px;
+}
+
+.kpi_value{
+    font-size: 22px;
+    color: #0e1726;
+    letter-spacing: 1px;
+    font-weight: bold;
+}
+
+.kpi_label{
+    font-size: 12px;
+    text-transform: lowercase;
+    letter-spacing: 1px;
+    color: #55606e;
+    margin-top: 4px;
+}
+
+.kpi_note{
+    font-size: 11px;
+    text-transform: lowercase;
+    letter-spacing: 1px;
+    color: #5fcf80;
+    margin-top: 6px;
+}
+
+
+/* charts ................................................................. */
+
+#charts_section{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.chart_card{
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+}
+
+
+/* schools table .......................................................... */
+
+#schools_table_wrap{
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+    overflow-x: auto;
+}
+
+#schools_table{
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 820px;
+}
+
+#schools_table th{
+    text-align: left;
+    padding: 14px 16px;
+    background-color: #0e1726;
+    color: #fff;
+    font-size: 12px;
+    text-transform: lowercase;
+    letter-spacing: 1px;
+    font-weight: normal;
+    white-space: nowrap;
+}
+
+#schools_table td{
+    padding: 13px 16px;
+    font-size: 13px;
+    color: #2c3542;
+    text-transform: lowercase;
+    letter-spacing: 1px;
+    border-bottom: 1px solid #eef0ef;
+    white-space: nowrap;
+}
+
+#schools_table tbody tr:hover{
+    background-color: rgba(95, 207, 128, 0.06);
+}
+
+#schools_table tbody tr:last-child td{
+    border-bottom: none;
+}
+
+.status_badge{
+    display: inline-block;
+    padding: 3px 12px;
+    border-radius: 12px;
+    font-size: 11px;
+    letter-spacing: 1px;
+}
+
+.status_active{
+    background-color: rgba(95, 207, 128, 0.18);
+    color: #2b7a4b;
+}
+
+.status_suspended{
+    background-color: rgba(255, 99, 71, 0.15);
+    color: #c0392b;
+}
+
+.action_cell button{
+    border: none;
+    padding: 6px 14px;
+    border-radius: 12px;
+    font-size: 12px;
+    text-transform: lowercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    margin-right: 6px;
+}
+
+.action_cell button:focus{
+    outline: none;
+}
+
+.view_btn{
+    background-color: #eef0ef;
+    color: #2c3542;
+}
+
+.view_btn:hover{
+    background-color: #dfe3e0;
+}
+
+.toggle_btn.suspend{
+    background-color: rgba(255, 99, 71, 0.15);
+    color: #c0392b;
+}
+
+.toggle_btn.suspend:hover{
+    background-color: tomato;
+    color: #fff;
+}
+
+.toggle_btn.activate{
+    background-color: rgba(95, 207, 128, 0.18);
+    color: #2b7a4b;
+}
+
+.toggle_btn.activate:hover{
+    background-color: #5fcf80;
+    color: #fff;
+}
+
+
+/* activity feed .......................................................... */
+
+#activity_feed{
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 10px 20px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+}
+
+.activity_item{
+    display: flex;
+    align-items: flex-start;
+    padding: 14px 0;
+    border-bottom: 1px solid #eef0ef;
+}
+
+.activity_item:last-child{
+    border-bottom: none;
+}
+
+.activity_dot{
+    width: 10px;
+    height: 10px;
+    border-radius: 100%;
+    background-color: #5fcf80;
+    margin: 5px 14px 0 0;
+    flex-shrink: 0;
+}
+
+.activity_item.type_alert .activity_dot{
+    background-color: tomato;
+}
+
+.activity_item.type_finance .activity_dot{
+    background-color: #f0a92e;
+}
+
+.activity_item.type_staff .activity_dot{
+    background-color: #4a90d9;
+}
+
+.activity_what{
+    font-size: 13px;
+    text-transform: lowercase;
+    letter-spacing: 1px;
+    color: #2c3542;
+}
+
+.activity_when{
+    font-size: 11px;
+    text-transform: lowercase;
+    letter-spacing: 1px;
+    color: #9aa3b0;
+    margin-top: 3px;
+}
+
+
+/* error line above the schools table ..................................... */
+
+.error{
+    margin-bottom: 12px;
+}
+
+.error #error{
+    color: tomato;
+    letter-spacing: 1px;
+    font-size: 13px;
+    text-transform: lowercase;
+}
+
+
+/* responsive ............................................................. */
+
+@media screen and (max-width: 900px){
+
+    #charts_section{
+        grid-template-columns: 1fr;
+    }
+
+    #kpi_grid{
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    }
+}

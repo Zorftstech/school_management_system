@@ -1,295 +1,208 @@
 <?php
 
-    session_start();
+    // access + input handling happen before any output.....
+
+    if (session_status() === PHP_SESSION_NONE) {
+
+        session_start();
+    }
 
     if (!isset($_SESSION['principal_id_code'])) {
-    
+
         header("location: principal_login.php");
+        exit();
     }
 
-    include('action_php/database.php');
+    include('action_php/dashboard_data.php');
 
-    if (isset($_POST['submit'])) {
-        $session = mysqli_real_escape_string($conn, $_POST['session']);
-        $term = mysqli_real_escape_string($conn, $_POST['term']);
+    if (!isset($_POST['submit'])) {
 
-        if (empty($session) || empty($term)) {
-            
-            $fail = 'fill all the inputs';
-            header("location: pupil_withdraw_details_form.php?fail=$fail");
-            exit();
+        header("location: pupil_withdraw_details_form.php");
+        exit();
+    }
 
-        }else {
-            
-            $session_reg = "/^([0-9]{4})\/([0-9]{4})$/";
-            if (!preg_match($session_reg, $session)) {
-                    
-                $fail = 'academic session format is incorrect';
-                header("location: pupil_withdraw_details_form.php?fail=$fail");
-                exit();
+    $term = trim(isset($_POST['term']) ? $_POST['term'] : '');
+    $academic_session = trim(isset($_POST['session']) ? $_POST['session'] : '');
 
-            }else {
-                
-                $query = "SELECT * FROM pupil_school_withdraw_transaction_table WHERE session = '$session' AND term = '$term'";
-                $query_run = mysqli_query($conn, $query);
+    if ($term === '' || $academic_session === '') {
 
-                $num = mysqli_num_rows($query_run);
-            }
+        header("location: pupil_withdraw_details_form.php?fail=" . urlencode('fill all the inputs'));
+        exit();
+    }
+
+    if (!preg_match("/^([0-9]{4})\/([0-9]{4})$/", $academic_session)) {
+
+        header("location: pupil_withdraw_details_form.php?fail=" . urlencode('academic session format is incorrect'));
+        exit();
+    }
+
+
+    // transactions — live rows, sample rows when the database is off.....
+
+    $sample = false;
+    $rows = null;
+
+    if ($conn) {
+
+        $term_sql = mysqli_real_escape_string($conn, $term);
+        $session_sql = mysqli_real_escape_string($conn, $academic_session);
+
+        $rows = principal_rows($conn, "SELECT * FROM pupil_school_withdraw_transaction_table WHERE session = '$session_sql' AND term = '$term_sql' ORDER BY id DESC");
+
+        if ($rows === null) {
+
+            $rows = array();
         }
 
+    } else {
 
+        $sample = true;
+
+        $rows = array(
+            array('id' => 1, 'user_name' => 'c_umeh', 'description' => 'Generator fuel purchase', 'amount' => 95000, 'date' => '2026-06-25', 'status' => 'approved'),
+            array('id' => 2, 'user_name' => 'k_bello', 'description' => 'Laboratory equipment repair', 'amount' => 60000, 'date' => '2026-06-18', 'status' => 'not approved'),
+            array('id' => 3, 'user_name' => 'c_umeh', 'description' => 'Sports day logistics', 'amount' => 65000, 'date' => '2026-06-05', 'status' => 'approved'),
+        );
     }
 
+    $total_amount = 0;
 
+    foreach ($rows as $row) {
 
+        $total_amount += (float) $row['amount'];
+    }
+
+    $page_title = 'Primary withdrawals';
+
+    include('header.php');
 
 ?>
 
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>pupils school withdrawal details view</title>
-
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/links_css.css">
-    <link rel="stylesheet" href="../admin_officer/css/student_registration_detail_css.css">
-    <link rel="stylesheet" href="../../fontawesome/css/all.min.css">
+<div class="context-bar">
+    <span>Arm: <strong>Primary (pupils)</strong></span>
+    <span>Term: <strong><?php echo principal_text($term); ?></strong></span>
+    <span>Session: <strong><?php echo principal_text($academic_session); ?></strong></span>
+    <a href="pupil_withdraw_details_form.php">Change</a>
+    <?php if ($sample) echo '<span class="sample-badge">sample data</span>'; ?>
+</div>
 
 
-    <script src="javascript/jquery.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<section class="money-grid">
 
-    <style>
-        .no_deposit{
-            text-align: center;
-            text-transform: capitalize;
-            font-weight: 600;
-            color: #5fcf80;
-        }
+    <article class="money-card">
+        <p class="stat-label">Total withdrawn</p>
+        <h3 class="stat-value"><?php echo principal_naira($total_amount); ?></h3>
+    </article>
 
-        .approved_btn{
-            color: blue;
-        }
+    <article class="money-card">
+        <p class="stat-label">Transactions</p>
+        <h3 class="stat-value"><?php echo count($rows); ?></h3>
+    </article>
 
-        .not_approve_btn{
-            color: red;
-        }
-    </style>
+</section>
 
 
-</head>
-<body>
+<section class="panel">
 
-    <?php include('links.php') ?>
+    <div class="panel-head">
+        <h2>Withdrawal transactions</h2>
+        <span id="error" class="form-feedback"></span>
+    </div>
 
-    <section id="reg_section">
-        <div class="reg_header">
-            <h2><?php echo $term ?> term primary school withdrawing details</h2>
-            <p id="error" style="color: red;"></p>
-            <h2>academic session:<?php echo $session ?> </h2>
-        </div>
-    
-        <div class="reg_body">
+    <?php if (count($rows) < 1): ?>
 
-        <?php
-        
-            if ($num < 1) {
-               ?>
+    <div class="empty-note">No withdrawals recorded for this term.</div>
 
-                <h3 class="no_deposit">no withdrawal for this term</h3>
+    <?php else: ?>
 
-                <?php
-            }else {
-                ?>
+    <div class="panel-body flush table-wrap">
+        <table class="dash-table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Withdrawn by</th>
+                    <th>Reason</th>
+                    <th>Date</th>
+                    <th>Amount</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
 
-                
-    
-            <div class="reg_table">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>withdraw by</th>
-                            <th>reason for withdraw</th>
-                            <th>date</th>
-                            <th>amount withdraw</th>
-                            <th>status</th>
-                            <th>action</th>
-                           
-                        </tr>
-                    </thead>
-                    <tbody>
+                <?php $count = 0; foreach ($rows as $row): $count++; ?>
+                <tr>
+                    <td class="num"><?php echo $count; ?></td>
+                    <td><?php echo principal_text($row['user_name']); ?></td>
+                    <td><?php echo principal_text(principal_truncate($row['description'], 80)); ?></td>
+                    <td class="num"><?php echo principal_text($row['date']); ?></td>
+                    <td class="num"><?php echo principal_naira($row['amount']); ?></td>
+                    <td><?php echo principal_status_chip($row['status']); ?></td>
+                    <td>
+                        <?php if ($row['status'] == 'approved'): ?>
+                        <span class="stat-hint">—</span>
+                        <?php elseif ($sample): ?>
+                        <button type="button" class="btn-ghost" disabled title="sample data">Approve</button>
+                        <?php else: ?>
+                        <button type="button" class="btn-purple not_approve_btn" id="id<?php echo (int) $row['id']; ?>" data-id="<?php echo (int) $row['id']; ?>">Approve</button>
+                        <?php endif; ?>
+                    </td>
+                </tr>
+                <?php endforeach; ?>
 
-                        <?php
+            </tbody>
+        </table>
+    </div>
 
-                            $count = 0;
-                        
-                            while ($row = mysqli_fetch_array($query_run)) {
-                                
-                                $count++;
+    <?php endif; ?>
 
-                                $id = $row['id'];
-                                $user = $row['user_name'];
-                                $description = $row['description'];
-                                $amount = $row['amount'];
-                                $date = $row['date'];
-                                $status = $row['status'];
-
-                                if ($status == 'approved') {
-                                    
-                                    $action = '<button class="approved_btn"><i class="fa fa-check"></i></button>';
-                                }else {
-                                    $action = '<button class="not_approve_btn" id="id'.$id.'" data-id="'.$id.'"><i class="far fa-circle"></i></button>';
-                                }
-
-                                //<button class="approved_btn"><i class="material-icons">check</i></button>
-                                
-                                //$view = '<a href="single_student_transaction_detail_view.php?id='.$id.'&addmission_num='.$addmission_num.'&class='.$class.'&term='.$term.'&session='.$session.'" class="view_btn" id="view'.$id.'" data-id="'.$id.'">view</a>';
-
-                                ?>
-
-                                <tr>
-                                    <td><?php echo $count; ?></td>
-                                    <td><?php echo $user; ?></td>
-                                    <td><?php echo $description; ?></td>
-                                    <td><?php echo $date; ?></td>
-                                    <td>₦<?php echo $amount; ?></td>
-                                    <td><?php echo $status; ?></td>
-                                    <td><?php echo $action; ?></td>
-                                    
-                                </tr>
-
-                            <?php
-
-                                
-                            }
-
-                        ?>
-
-                   
-
-                    <!-- using database .....................
-                        <tr>
-                            <td>4444</td>
-                            <td>4444</td>
-                            <td>akin</td>
-                            <td>wale</td>
-                            <td>saheed</td>
-                            <td>js 1</td>
-                            <td>2020/2032</td>
-                            <td>2020/2032</td>
-                            <td><button type="button" class="view_btn">view</button></td>
-                            <td><button type="button" class="edit_btn">edit</button></td>
-                            <td><button type="button" class="delete_btn">delete</button></td>
-                        </tr>
-                        <tr>
-                            <td>4444</td>
-                            <td>4444</td>
-                            <td>akin</td>
-                            <td>wale</td>
-                            <td>saheed</td>
-                            <td>js 1</td>
-                            <td>2020/2032</td>
-                            <td>2020/2032</td>
-                            <td><button type="button" class="view_btn" id="id" data-id="id">view</button></td>
-                            <td><button type="button" class="edit_btn" id="id" data-id="id">edit</button></td>
-                            <td><button type="button" class="delete_btn" id="id" data-id="id">delete</button></td>
-                        </tr>
-                        <tr>
-                            <td>4444</td>
-                            <td>4444</td>
-                            <td>akin</td>
-                            <td>wale</td>
-                            <td>saheed</td>
-                            <td>js 1</td>
-                            <td>2020/2032</td>
-                            <td>2020/2032</td>
-                            <td><button type="button" class="view_btn">view</button></td>
-                            <td><button type="button" class="edit_btn">edit</button></td>
-                            <td><button type="button" class="delete_btn">delete</button></td>
-                        </tr>
-                        <tr>
-                            <td>4444</td>
-                            <td>4444</td>
-                            <td>akin</td>
-                            <td>wale</td>
-                            <td>saheed</td>
-                            <td>js 1</td>
-                            <td>2020/2032</td>
-                            <td>2020/2032</td>
-                            <td><button type="button" class="view_btn">view</button></td>
-                            <td><button type="button" class="edit_btn">edit</button></td>
-                            <td><button type="button" class="delete_btn">delete</button></td>
-                        </tr>
-                        -->
-                    
-                        
-                    </tbody>
-                </table>
-            </div>
-
-            <?php
-                
-            }
-        
-        ?>
-
-            
-            
-        </div>
-    </section>
+</section>
 
 
-    <script>
-        $(document).ready(function(){
+<script>
 
+    $(document).ready(function(){
 
-            $('.not_approve_btn').click(function(event){
+        $('.not_approve_btn').click(function(event){
 
-                var id = event.currentTarget.getAttribute('data-id');
+            var id = event.currentTarget.getAttribute('data-id');
 
-                if ( confirm('do you want to approve this transaction?')) {
-                    
-                    $.ajax({
-                        url: 'action_php/multipurpose_action.php',
-                        data: {action: 'appove pupil school withdraw transaction', id},
-                        method: 'POST',
-                        dataType: 'text',
+            if (confirm('do you want to approve this transaction?')) {
 
-                        beforeSend: function(){
-                            $('#id'+id).text('approving.....');
-                            $('#id'+id).css('color', '#5fcf80');
-                            $('#id'+id).attr('disabled', 'disabled');
-                        },
+                $.ajax({
+                    url: 'action_php/multipurpose_action.php',
+                    data: {action: 'appove pupil school withdraw transaction', id},
+                    method: 'POST',
+                    dataType: 'text',
 
-                        success: function(data){
-                            var html = '<i class="far fa-circle"></i>'
-                            $('#id'+id).html(html);
-                            $('#id'+id).css('color', 'red');
-                            $('#id'+id).attr('disabled', false);
-                            
-                            if (data == 'approved') {
-                                
-                                alert('transaction successfully approved');
-                                window.location.reload();
-                            }else{
-                                alert('error');
-                            }
+                    beforeSend: function(){
+                        $('#id'+id).text('Approving…');
+                        $('#id'+id).attr('disabled', 'disabled');
+                    },
 
+                    success: function(data){
+
+                        $('#id'+id).text('Approve');
+                        $('#id'+id).attr('disabled', false);
+
+                        if (data == 'approved') {
+
+                            alert('transaction successfully approved');
+                            window.location.reload();
+                        }else{
+                            alert('error');
                         }
-                    })
-                }
-            })
+
+                    }
+                })
+            }
         })
-    </script>
+    })
+</script>
 
+<?php
 
-    
-</body>
-</html>
+include('footer.php');
+
+?>

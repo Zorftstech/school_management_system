@@ -1,9 +1,8 @@
 <?php
 session_start();
 
-use PHPMailer\PHPMailer\PHPMailer;
-
 include('database.php');
+require_once __DIR__ . "/../../../util/email_config.util.php";
 
 if (isset($_POST['submit'])) {
     
@@ -24,61 +23,23 @@ if (isset($_POST['submit'])) {
         $query_run_two = mysqli_query($conn, $query_two);
 
         if ($query_run_two) {
-            
-            $school_mail = "eduspringofgrace@gmail.com";
-            $name = "email varification";
+
             $subject = "code to varified your email before reseting ur password";
             $body = "copy this code  ".$pwd_code." into space provided and reset ur password";
-            $pwd = "08104322128";
-            
-            require_once "phpmailer/PHPMailer.php";
-            require_once "phpmailer/SMTP.php";
-            require_once "phpmailer/Exception.php";
-            
-            $mail = new PHPMailer();
 
-            
-            $mail->IsSMTP();  // telling the class to use SMTP
-            //$mail->SMTPDebug = 2;
-            $mail->Mailer = "smtp";
-            // $mail->Host = "ssl://smtp.gmail.com";
-            // //$mail->Port = 587;
-            // $mail->Port = 465;
-            $mail->Host = "springofgracegroupofschool.com.ng";
-            $mail->Port = 587;
-            $mail->SMTPAuth = true; // turn on SMTP authentication
-            
-            // $mail->Username = "eduspringofgrace@gmail.com"; // SMTP username
-            // $mail->Password = "qcygveozmfpfacjw"; // SMTP password
-            $mail->Username = "noreply@springofgracegroupofschool.com.ng"; // SMTP username
-            $mail->Password = "Akin08037768663"; // SMTP password
-            //$Mail->Priority = 1;
-            $mail->AddAddress($email);
-            $mail->SetFrom('noreply@springofgracegroupofschool.com.ng');
-            //$mail->AddReplyTo('akinyemisaheedwale@gmail.com');
-            $mail->Subject  = $subject;
-            $mail->Body     = $body;
-            $mail->WordWrap = 50;
+            $result = sendEmail($email, $subject, $body);
 
-
-            if ($mail->send()) {
-
-                
+            if ($result === true) {
                 
                 header("location: ../academic_officer_password_reset.php?token=$pwd_token");
 
-                
-
             }else{
-                
                 
                 $result = 'fail to send code please resend ur email';
                 header("location: ../academic_officer_forgot_password.php?result=$result");
             }
 
         }else{
-
-            
             $result = 'fail to send please resend ur email';
             header("location: ../academic_officer_forgot_password.php?result=$result");
         }

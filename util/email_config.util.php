@@ -1,5 +1,6 @@
 <?php
 
+require_once __DIR__ . '/../bootstrap.php';
 require_once __DIR__ . "/../phpmailer/PHPMailer.php";
 require_once __DIR__ . "/../phpmailer/SMTP.php";
 require_once __DIR__ . "/../phpmailer/Exception.php";

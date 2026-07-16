@@ -1,9 +1,6 @@
 <?php
     session_start();
-    
-    
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -21,11 +18,7 @@
                 <h2>principal forgot password form</h2>
                 <input type="email" id="email" placeholder="Enter Email" required name="email">
 
-                
-
                 <input type="submit" name="submit" id="reg_btn" value="submit">
-
-                
             </form>
         </div>
     </div>

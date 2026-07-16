@@ -198,19 +198,11 @@
 
                 </div>
 
-
-                
-
-            
                 <div class="submit">
                     <input type="submit" name="submit" id="submit" value="create">
                 </div>
 
-
-
             </form>
-
-
                                     
             <div id="resend_email">
                 <a href="resend_formaster_email_form.php">resend email</a>

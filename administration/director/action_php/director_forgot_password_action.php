@@ -1,9 +1,9 @@
 <?php
 session_start();
 
-use PHPMailer\PHPMailer\PHPMailer;
-
 include('database.php');
+
+require_once __DIR__ . "/../../../util/email_config.util.php";
 
 if (isset($_POST['submit'])) {
     
@@ -18,57 +18,19 @@ if (isset($_POST['submit'])) {
     if ($num > 0) {
 
         $pwd_code = substr(uniqid(), 8);
-        //$pwd_token = rand(534322, 893772);
 
         $query_two = "UPDATE director_login_table SET pwd_code = '$pwd_code' WHERE email = '$email'";
         $query_run_two = mysqli_query($conn, $query_two);
 
         if ($query_run_two) {
-            
-            $school_mail = "eduspringofgrace@gmail.com";
-            $name = "email varification";
             $subject = "code to varified your email before reseting ur password";
             $body = "copy this code  ".$pwd_code." into space provided and reset ur password";
-            $pwd = "08104322128";
             
-            require_once "phpmailer/PHPMailer.php";
-            require_once "phpmailer/SMTP.php";
-            require_once "phpmailer/Exception.php";
-            
-            $mail = new PHPMailer();
+            $result = sendEmail($email, $subject, $body);
 
-
-            $mail->IsSMTP();  // telling the class to use SMTP
-            //$mail->SMTPDebug = 2;
-            $mail->Mailer = "smtp";
-            // $mail->Host = "ssl://smtp.gmail.com";
-            // //$mail->Port = 587;
-            // $mail->Port = 465;
-            $mail->Host = "springofgracegroupofschool.com.ng";
-            $mail->Port = 587;
-            $mail->SMTPAuth = true; // turn on SMTP authentication
-
-            // $mail->Username = "eduspringofgrace@gmail.com"; // SMTP username
-            // $mail->Password = "qcygveozmfpfacjw"; // SMTP password
-            $mail->Username = "noreply@springofgracegroupofschool.com.ng"; // SMTP username
-            $mail->Password = "Akin08037768663"; // SMTP password
-
-            $mail->AddAddress($email);
-            // $mail->SetFrom($school_mail, $name);
-            $mail->SetFrom('noreply@springofgracegroupofschool.com.ng');
-            //$mail->AddReplyTo('akinyemisaheedwale@gmail.com');
-            $mail->Subject  = $subject;
-            $mail->Body     = $body;
-            $mail->WordWrap = 50;
-
-
-            if ($mail->send()) {
-
-                
+            if ($result === true) {
                 
                 header("location: ../director_password_reset.php?token=$email");
-
-                
 
             }else{
 
@@ -80,14 +42,11 @@ if (isset($_POST['submit'])) {
 
         }else{
 
-           
             $result = 'fail to send please resend ur email';
             header("location: ../director_forgot_password.php?result=$result");
             
             exit();
         }
-        
-        
     }else{
 
         $result = 'no such email exit';

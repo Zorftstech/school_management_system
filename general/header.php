@@ -11,7 +11,8 @@
                         
                         <li><a href="contact.php">contact</a></li>
                         <li><a href="news.php">news</a></li>
-                        
+                        <!-- <li><a href="administration/director/director_login.php">director login</a></li> -->
+
                     </ul>
                 </div>
             </div>

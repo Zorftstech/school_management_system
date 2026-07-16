@@ -1,7 +1,6 @@
 <?php
     session_start();
     if (isset($_SESSION['super_admin_id_code'])) {
-
         header("location: super_admin_home.php");
     }
 
@@ -17,6 +16,7 @@
     <title>acadex super admin login</title>
     <link rel="stylesheet" href="css/super_admin_login_css.css">
     <script src="../../javascript/jquery.js"></script>
+    <link rel="stylesheet" href="../../webfonts/font.css">
 </head>
 <body>
     <div id="form_container">
@@ -31,7 +31,7 @@
                     <img src="../../image/school/logo.jpg" alt="acadex logo">
                 </div>
 
-                <h2>acadex super admin login</h2>
+                <h2>acadex admin login</h2>
 
                 <input type="email" id="email" placeholder="Enter Email" required name="email">
 

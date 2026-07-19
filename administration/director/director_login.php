@@ -30,7 +30,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>director login</title>
-    <link rel="stylesheet" href="css/director_auth_css.css">
+    <link rel="stylesheet" href="../css/auth_css.css?v=1">
 </head>
 <body>
     <main class="page">

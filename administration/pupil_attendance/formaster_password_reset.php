@@ -1,16 +1,16 @@
 <?php
     session_start();
     if (!isset($_SESSION['school_pwd'])) {
-    
+
             exit();
     }
 
     if (isset($_GET['token'])) {
-        
+
        $token = $_GET['token'];
-       
+
     }
-    
+
 ?>
 
 
@@ -21,36 +21,55 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>formaster reset password</title>
-    <link rel="stylesheet" href="../principal/css/principal_login_css.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <script src="../../../javascript/jquery.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="../css/auth_css.css?v=1">
+    <script src="../../javascript/jquery.js"></script>
 </head>
-<body style="background-color: #eef0ef;">
-    <div id="form_container">
-        <div class="form_element">
-            <form  method="POST" id="form">
-                <h2>pupils formaster/formistress reset password form</h2>
-                
-                <div style="text-align: center; margin-bottom: 20px;">
-                    <p id="error" style="color: tomato;"></p>
+<body>
+    <main class="page">
+        <div class="card">
+            <div class="icon_badge">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"></path>
+                </svg>
+            </div>
+
+            <h1>Reset password</h1>
+            <p class="sub">Enter the code sent to your email and choose a new password.</p>
+
+            <p class="js_alert" id="error"></p>
+
+            <form method="POST" id="form">
+                <div class="field">
+                    <label for="code">Reset code</label>
+                    <input type="text" id="code" placeholder="Enter the code from your email" required name="code">
                 </div>
-                <input type="text" id="email" placeholder="Enter code" required name="code">
 
-                <input type="password" id="pwd" class="pwd" placeholder="New Password" required name="password">
+                <div class="field">
+                    <label for="pwd">New password</label>
+                    <input type="password" id="pwd" class="pwd" placeholder="At least 8 characters" required name="password">
+                </div>
 
-                <input type="password" id="pwd" class="pwd_confirm" placeholder="Confirm Password" required name="user_name">
+                <div class="field">
+                    <label for="pwd_confirm">Confirm password</label>
+                    <input type="password" id="pwd_confirm" class="pwd_confirm" placeholder="Re-enter your new password" required name="user_name">
+                </div>
 
                 <input type="hidden" id="token" name="token" value="<?php echo $token ?>">
 
-                <input type="submit" name="submit" id="reg_btn" value="submit">
-
-                
+                <input type="submit" name="submit" id="reg_btn" class="submit_btn" value="Reset password">
             </form>
+
+            <a class="back_link" href="formaster_login_form.php">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="19" y1="12" x2="5" y2="12"></line>
+                    <polyline points="12 19 5 12 12 5"></polyline>
+                </svg>
+                Back to login
+            </a>
         </div>
-    </div>
+
+        <p class="page_footer">Acadex &middot; by Zorfts Technologies Ltd</p>
+    </main>
 
     <script>
 
@@ -60,13 +79,13 @@
 
                 event.preventDefault();
 
-                var code = $('#email').val();
+                var code = $('#code').val();
                 var pwd = $('.pwd').val();
                 var confirm_pwd = $('.pwd_confirm').val()
                 var token = $('#token').val();
-                
+
                 if (code == '' || pwd == '' || confirm_pwd == '') {
-                    
+
                     $('#error').text('please fill all space provided......');
                     $('#form')[0].reset();
 
@@ -89,11 +108,11 @@
                                 $('#error').text('');
 
                             }, 7000);
-                        
+
                     }else{
 
                         if (pwd.length < 8) {
-                            
+
 
                             $('#error').text('password must be atleast 8 characters.....');
                             $('#form')[0].reset();
@@ -113,17 +132,17 @@
                                 dataType: 'text',
                                 beforeSend: function(){
 
-                                    $('#reg_btn').val('reseting......');
+                                    $('#reg_btn').val('Resetting......');
                                     $('#reg_btn').attr('disabled', 'disabled');
                                 },
 
                                 success: function(data){
 
-                                    $('#reg_btn').val('Submit');
+                                    $('#reg_btn').val('Reset password');
                                     $('#reg_btn').attr('disabled', false);
 
                                     if (data == 'updated') {
-                                        
+
                                         window.location.assign("formaster_login_form.php?result='reset_pwd'");
 
                                     }else{
@@ -157,7 +176,6 @@
 
 
 
-            
         })
 
 

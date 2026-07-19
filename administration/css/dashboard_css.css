@@ -932,6 +932,7 @@ a:hover{
     color: var(--purple-600);
 }
 
+.dash-content .submit a,
 .dash-content .payment_print a,
 .dash-content #print_all a{
     background-color: var(--purple-600);
@@ -942,6 +943,7 @@ a:hover{
     font-weight: 500;
 }
 
+.dash-content .submit a:hover,
 .dash-content .payment_print a:hover,
 .dash-content #print_all a:hover{
     background-color: var(--purple-700);

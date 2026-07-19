@@ -25,7 +25,7 @@ if (!isset($page_title)) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>finance — <?php echo htmlspecialchars($page_title); ?></title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../css/dashboard_css.css?v=1">
+    <link rel="stylesheet" href="../css/dashboard_css.css?v=2">
 <?php
 
     if (isset($page_css)) {
@@ -67,39 +67,39 @@ if (!isset($page_title)) {
 
                 <a href="class_voucher_generate_form.php">
                     <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2V3z"/><path d="M9 8h6"/><path d="M9 12h6"/></svg>
-                    Generate voucher
+                    Generate Voucher
                 </a>
 
                 <a href="class_voucher_details_form.php">
                     <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2V3z"/><path d="M9 9h6"/></svg>
-                    Voucher details
+                    Voucher Details
                 </a>
 
                 <a href="student_number_in_voucher_form.php">
                     <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20v-1a6.5 6.5 0 0 1 13 0v1"/><path d="M17 8h5"/></svg>
-                    Students in voucher
+                    Voucher Beneficiaries
                 </a>
 
                 <a href="add_student_to_voucher_form.php">
                     <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="10" cy="8" r="4"/><path d="M3 21v-1a7 7 0 0 1 14 0v1"/><path d="M19 8v6"/><path d="M16 11h6"/></svg>
-                    Add student
+                    Add Student
                 </a>
 
                 <p class="dash-nav-label">College &middot; fees</p>
 
                 <a href="student_school_fees_payment_form.php">
                     <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>
-                    Fees payment
+                    Fees Payment
                 </a>
 
                 <a href="class_school_fees_detail_form.php">
                     <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18"/><path d="M9 20V9"/></svg>
-                    Class fees details
+                    Class Fees
                 </a>
 
                 <a href="single_student_school_fees_detail_form.php">
                     <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a8 8 0 0 1 16 0v1"/></svg>
-                    Single student fees
+                    Single Student Fees
                 </a>
 
                 <p class="dash-nav-label">College &middot; transactions</p>

@@ -1,6 +1,27 @@
 /* Acadex dashboard theme — minimal, clean, purple primary.
    Shared by every role portal; loaded after Bootstrap, overrides live at the bottom. */
 
+@font-face {
+    font-family: 'Satoshi';
+    src: url('../../webfonts/Satoshi-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Satoshi';
+    src: url('../../webfonts/Satoshi-Medium.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Satoshi';
+    src: url('../../webfonts/Satoshi-Bold.woff') format('woff');
+    font-weight: 700;
+    font-style: normal;
+}
+
 :root{
     --purple-700: #5b21b6;
     --purple-600: #6d28d9;
@@ -33,9 +54,13 @@ body{
     margin: 0;
     background-color: var(--bg);
     color: var(--ink);
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-family: 'Satoshi', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     font-size: 14px;
     line-height: 1.5;
+}
+
+input, select, textarea, button{
+    font-family: inherit;
 }
 
 a{
@@ -603,4 +628,329 @@ a:hover{
         padding-left: 16px;
         padding-right: 16px;
     }
+}
+
+
+/* ---------- legacy content re-skin ----------
+   Older portal pages keep their original markup and per-page stylesheets
+   (#form_container, .input_container, .reg_* tables, transaction views).
+   These rules are scoped under .dash-content so they out-specify the legacy
+   selectors and re-theme that markup to the dashboard look without HTML edits. */
+
+/* form + section cards lose their old fixed offsets and pick up panel styling */
+
+.dash-content #form_container,
+.dash-content #reg_section,
+.dash-content #transactio_container,
+.dash-content .transaction_container{
+    margin: 0 0 24px;
+    width: 100%;
+    max-width: 960px;
+    background-color: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+}
+
+.dash-content #form_container{
+    padding: 24px 28px;
+}
+
+.dash-content #transactio_container,
+.dash-content .transaction_container{
+    padding: 24px 28px;
+}
+
+.dash-content #reg_section{
+    overflow: hidden;
+}
+
+.dash-content #form_container h2,
+.dash-content #header h2{
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--ink);
+    letter-spacing: 0;
+    margin-bottom: 20px;
+}
+
+/* green section header bars become soft purple */
+
+.dash-content .input_container #header{
+    background-color: var(--purple-50);
+    color: var(--purple-700);
+    border-radius: 8px;
+    padding: 8px 12px;
+    opacity: 1;
+    margin-bottom: 20px;
+}
+
+.dash-content .input_container #header h4{
+    font-size: 13px;
+    font-weight: 600;
+    margin: 0;
+    color: var(--purple-700);
+}
+
+/* labels + inputs */
+
+.dash-content #form_container label,
+.dash-content .form_input label{
+    color: var(--ink-soft);
+    font-size: 13px;
+    font-weight: 500;
+    margin-bottom: 6px;
+    text-transform: capitalize;
+}
+
+.dash-content #form_container input:not([type="submit"]):not([type="checkbox"]):not([type="radio"]),
+.dash-content #form_container select,
+.dash-content #form_container textarea,
+.dash-content .form_input input,
+.dash-content .form_input select,
+.dash-content .form_input textarea{
+    width: 100%;
+    max-width: 420px;
+    height: auto;
+    padding: 9px 12px;
+    font-size: 14px;
+    color: var(--ink);
+    background-color: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+}
+
+.dash-content #form_container input:focus,
+.dash-content #form_container select:focus,
+.dash-content #form_container textarea:focus,
+.dash-content .form_input input:focus,
+.dash-content .form_input select:focus,
+.dash-content .form_input textarea:focus{
+    outline: none;
+    border: 1px solid var(--purple-500);
+    background-color: var(--surface);
+    box-shadow: 0 0 0 3px var(--purple-100);
+}
+
+/* field rows wrap instead of overflowing */
+
+.dash-content .input_container .two,
+.dash-content .two{
+    flex-wrap: wrap;
+    gap: 18px;
+    padding: 0;
+}
+
+.dash-content .two .form_input,
+.dash-content .input_container .two .form_input{
+    flex: 1 1 220px;
+    margin-right: 0;
+    margin-bottom: 18px;
+}
+
+/* submit buttons: green pills become standard purple buttons */
+
+.dash-content .submit{
+    padding: 6px 0 0;
+}
+
+.dash-content .submit #submit,
+.dash-content #submit,
+.dash-content #submit input{
+    width: auto;
+    min-width: 140px;
+    background-color: var(--purple-600);
+    color: #fff;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.2px;
+    border: none;
+    border-radius: 8px;
+    padding: 9px 18px;
+    margin-top: 10px;
+    transition: background-color 0.15s ease;
+}
+
+.dash-content .submit #submit:hover,
+.dash-content #submit:hover,
+.dash-content #submit input:hover{
+    background-color: var(--purple-700);
+    color: #fff;
+    border: none;
+    opacity: 1;
+}
+
+/* feedback text */
+
+.dash-content .error,
+.dash-content .error #error,
+.dash-content #fail{
+    color: #b3341f;
+    letter-spacing: 0;
+}
+
+.dash-content #success,
+.dash-content #correct{
+    color: var(--good-ink);
+    letter-spacing: 0;
+}
+
+/* detail tables (.reg_*) */
+
+.dash-content .reg_header{
+    background-color: var(--purple-600);
+    border-radius: 0;
+    padding: 12px 18px;
+}
+
+.dash-content .reg_header h2{
+    color: #fff;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0;
+    margin: 0;
+}
+
+.dash-content .reg_body{
+    padding: 20px;
+}
+
+.dash-content .reg_table table th{
+    background-color: var(--purple-100);
+    color: var(--purple-700);
+    border: 1px solid var(--border);
+    font-size: 12.5px;
+    font-weight: 600;
+}
+
+.dash-content .reg_table table td{
+    border: 1px solid var(--border);
+    color: var(--ink-soft);
+    font-size: 13.5px;
+}
+
+.dash-content table tr:nth-child(even){
+    background-color: var(--bg);
+}
+
+.dash-content table tr:hover{
+    background-color: var(--purple-50);
+}
+
+.dash-content .no_deposit{
+    color: var(--ink-muted);
+    font-size: 14px;
+    font-weight: 500;
+    text-align: center;
+    padding: 20px 0;
+}
+
+/* row action buttons */
+
+.dash-content .view_btn,
+.dash-content .edit_btn,
+.dash-content .delete_btn{
+    color: #fff;
+    border: none;
+    border-radius: 7px;
+    padding: 6px 12px;
+    font-size: 12.5px;
+    font-weight: 500;
+}
+
+.dash-content .view_btn{
+    background-color: var(--purple-600);
+}
+
+.dash-content .edit_btn{
+    background-color: var(--ink-soft);
+}
+
+.dash-content .delete_btn{
+    background-color: #c0392b;
+}
+
+.dash-content .view_btn:hover,
+.dash-content .edit_btn:hover,
+.dash-content .delete_btn:hover{
+    color: #fff;
+    opacity: 0.85;
+    text-decoration: none;
+}
+
+/* pagination */
+
+.dash-content #pages li a{
+    color: var(--purple-700);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    margin-right: 4px;
+}
+
+.dash-content #pages li a:hover,
+.dash-content #pages li a:active{
+    color: #fff;
+    background-color: var(--purple-600);
+}
+
+/* transaction views */
+
+.dash-content #transaction_head p{
+    background-color: var(--purple-50);
+    border: 1px solid var(--purple-100);
+    border-radius: 8px;
+    color: var(--ink-soft);
+    font-size: 13.5px;
+}
+
+.dash-content #transaction_head .tranc_key,
+.dash-content #transaction_head .tranc_item{
+    font-size: 13.5px;
+    letter-spacing: 0;
+}
+
+.dash-content #transaction_head .tranc_key{
+    font-weight: 600;
+}
+
+.dash-content .transaction_body{
+    background-color: var(--bg);
+    border-radius: 10px;
+}
+
+.dash-content .transaction_body section .tranc_exp{
+    font-size: 14px;
+}
+
+.dash-content .transaction_body section .tranc_val{
+    border: 1px solid var(--border);
+    border-radius: 8px;
+}
+
+.dash-content .payment_success h3,
+.dash-content .payment_icon i{
+    color: var(--purple-600);
+}
+
+.dash-content .payment_print a,
+.dash-content #print_all a{
+    background-color: var(--purple-600);
+    color: #fff;
+    border-radius: 8px;
+    padding: 8px 14px;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.dash-content .payment_print a:hover,
+.dash-content #print_all a:hover{
+    background-color: var(--purple-700);
+    color: #fff;
+    opacity: 1;
+    text-decoration: none;
+}
+
+.dash-content #print_all{
+    margin-left: 0;
+    margin-bottom: 16px;
 }

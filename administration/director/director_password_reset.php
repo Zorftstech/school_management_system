@@ -18,34 +18,55 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>director reset password</title>
-    <link rel="stylesheet" href="css/director_login_css.css">
+    <link rel="stylesheet" href="css/director_auth_css.css">
     <script src="../../javascript/jquery.js"></script>
 </head>
 <body>
-    <div id="form_container">
-        <div class="form_element">
+    <main class="page">
+        <div class="card">
+            <div class="icon_badge">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"></path>
+                </svg>
+            </div>
+
+            <h1>Reset password</h1>
+            <p class="sub">Enter the code sent to your email and choose a new password.</p>
+
+            <p class="js_alert" id="error"></p>
+
             <form method="POST" id="form">
-                <h2>reset password</h2>
-                <p class="form_sub">Enter the code sent to your email and choose a new password.</p>
+                <div class="field">
+                    <label for="code">Reset code</label>
+                    <input type="text" id="code" placeholder="Enter the code from your email" required name="code">
+                </div>
 
-                <p class="form_msg" id="error"></p>
+                <div class="field">
+                    <label for="pwd">New password</label>
+                    <input type="password" id="pwd" class="pwd" placeholder="At least 8 characters" required name="password">
+                </div>
 
-                <input type="text" id="code" placeholder="Enter Code" required name="code">
-
-                <input type="password" id="pwd" class="pwd" placeholder="New Password" required name="password">
-
-                <input type="password" id="pwd_confirm" class="pwd_confirm" placeholder="Confirm Password" required name="user_name">
+                <div class="field">
+                    <label for="pwd_confirm">Confirm password</label>
+                    <input type="password" id="pwd_confirm" class="pwd_confirm" placeholder="Re-enter your new password" required name="user_name">
+                </div>
 
                 <input type="hidden" id="token" name="token" value="<?php echo $token ?>">
 
-                <input type="submit" name="submit" id="reg_btn" value="reset password">
-
-                <div id="forgot">
-                    <a href="director_login.php">back to login</a>
-                </div>
+                <input type="submit" name="submit" id="reg_btn" class="submit_btn" value="Reset password">
             </form>
+
+            <a class="back_link" href="director_login.php">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="19" y1="12" x2="5" y2="12"></line>
+                    <polyline points="12 19 5 12 12 5"></polyline>
+                </svg>
+                Back to login
+            </a>
         </div>
-    </div>
+
+        <p class="page_footer">Acadex &middot; Spring of Grace</p>
+    </main>
 
     <script>
 
@@ -108,13 +129,13 @@
                                 dataType: 'text',
                                 beforeSend: function(){
 
-                                    $('#reg_btn').val('reseting......');
+                                    $('#reg_btn').val('Resetting......');
                                     $('#reg_btn').attr('disabled', 'disabled');
                                 },
 
                                 success: function(data){
 
-                                    $('#reg_btn').val('reset password');
+                                    $('#reg_btn').val('Reset password');
                                     $('#reg_btn').attr('disabled', false);
 
                                     if (data == 'updated') {

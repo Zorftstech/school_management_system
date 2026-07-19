@@ -81,7 +81,7 @@
             </form>
         </div>
 
-        <p class="page_footer">Acadex &middot; Spring of Grace</p>
+        <p class="page_footer">Acadex &middot; by Zorfts Technologies Ltd</p>
     </main>
 </body>
 </html>

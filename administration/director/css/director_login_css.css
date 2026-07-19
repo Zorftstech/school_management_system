@@ -40,6 +40,26 @@ form h2{
     text-align: center;
 }
 
+.form_sub{
+    font-size: 14px;
+    color: #6b7280;
+    text-align: center;
+    margin: -18px auto 40px;
+    max-width: 320px;
+    line-height: 1.6;
+}
+
+.form_msg{
+    font-size: 14px;
+    color: tomato;
+    text-align: center;
+    margin: -16px 0 24px;
+}
+
+.form_msg:empty{
+    display: none;
+}
+
 
 
 
@@ -47,7 +67,7 @@ input{
     display: block;
 }
 
-#pwd, #email, #id_code{
+#pwd, #email, #id_code, #code, #pwd_confirm{
     margin-bottom: 40px;
     border: none;
     line-height: 25px;
@@ -60,6 +80,7 @@ input{
     text-align: center;
     border: none;
     background-color: #6d28d9;
+    font-size: 16px;
     padding: 10px 0;
     color: #fff;
     text-transform: capitalize;
@@ -72,7 +93,7 @@ input{
     background-color: #5b21b6;
 }
 
-#pwd:focus, #email:focus, #id_code:focus{
+#pwd:focus, #email:focus, #id_code:focus, #code:focus, #pwd_confirm:focus{
     outline: none;
     border-bottom: 1px solid #7c3aed;
 }

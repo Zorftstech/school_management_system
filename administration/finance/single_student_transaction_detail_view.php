@@ -33,7 +33,7 @@
 <?php
 
     $page_title = 'student transaction view';
-    $page_css = array('css/single_student_transaction_detail_view_css.css', '../../../wale_mgt_site/fontawesome/css/all.min.css');
+    $page_css = array('css/single_student_transaction_detail_view_css.css');
 
     include('action_php/header.php');
 

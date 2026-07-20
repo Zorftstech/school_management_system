@@ -81,27 +81,34 @@
     // ============================ END PLACEHOLDER ===============================
 
 
-    include('header.php');
+    $page_title = 'Overview';
+
+    include('action_php/header.php');
+
+
+    // does any of the platform-wide data below come from a sample fallback?.....
+
+    $any_sample = true; // this whole page is placeholder data pending the multi-tenant backend
 
 ?>
 
 
+    <?php if ($any_sample): ?>
+        <p class="page-intro"><span class="sample-badge">sample data</span> &nbsp;Every figure below is a placeholder — it will switch to live, per-school records once the multi-tenant backend lands.</p>
+    <?php endif; ?>
+
+
     <!-- kpi stats .......................................................... -->
 
-    <section id="kpi_section">
+    <section class="stat-grid">
 
-        <div class="section_head">
-            <h2>platform stats</h2>
-            <p>live totals across every registered school</p>
-        </div>
+        <?php foreach ($kpi_stats as $stat) { ?>
 
-        <div id="kpi_grid">
-
-            <?php foreach ($kpi_stats as $stat) { ?>
-
-                <div class="kpi_card">
-                    <span class="kpi_icon"><?php echo $stat['icon']; ?></span>
-                    <p class="kpi_value">
+            <article class="stat-card">
+                <div class="stat-icon"><?php echo $stat['icon']; ?></div>
+                <div>
+                    <p class="stat-label"><?php echo htmlspecialchars($stat['label']); ?></p>
+                    <h3 class="stat-value">
                         <?php
 
                             if (isset($stat['money'])) {
@@ -112,57 +119,65 @@
                                 echo htmlspecialchars(number_format($stat['value']));
                             }
                         ?>
-                    </p>
-                    <p class="kpi_label"><?php echo htmlspecialchars($stat['label']); ?></p>
-                    <p class="kpi_note"><?php echo htmlspecialchars($stat['note']); ?></p>
+                    </h3>
+                    <p class="stat-hint"><?php echo htmlspecialchars($stat['note']); ?></p>
                 </div>
+            </article>
 
-            <?php } ?>
-
-        </div>
+        <?php } ?>
 
     </section>
 
 
     <!-- charts .............................................................. -->
 
-    <section id="charts_section">
+    <div class="panel-grid">
 
-        <div class="chart_card">
-            <div class="section_head">
-                <h2>enrollment growth</h2>
-                <p>students and pupils per academic session</p>
+        <section class="panel">
+            <div class="panel-head">
+                <div>
+                    <h2>Enrollment growth</h2>
+                    <p class="stat-hint">Students and pupils per academic session</p>
+                </div>
             </div>
-            <div id="enrollment_chart"></div>
-        </div>
-
-        <div class="chart_card">
-            <div class="section_head">
-                <h2>revenue trend</h2>
-                <p>fees collected per term, current session</p>
+            <div class="panel-body">
+                <div id="enrollment_chart"></div>
             </div>
-            <div id="revenue_chart"></div>
-        </div>
+        </section>
 
-    </section>
+        <section class="panel">
+            <div class="panel-head">
+                <div>
+                    <h2>Revenue trend</h2>
+                    <p class="stat-hint">Fees collected per term, current session</p>
+                </div>
+            </div>
+            <div class="panel-body">
+                <div id="revenue_chart"></div>
+            </div>
+        </section>
+
+    </div>
 
 
     <!-- schools management .................................................. -->
 
-    <section id="schools_section">
+    <section id="schools_section" class="panel">
 
-        <div class="section_head">
-            <h2>registered schools</h2>
-            <p>suspend or reactivate a school, or open its detail view</p>
+        <div class="panel-head">
+            <div>
+                <h2>Registered schools</h2>
+                <p class="stat-hint">Suspend or reactivate a school, or open its detail view</p>
+            </div>
         </div>
 
         <div class="error">
             <p id="error"></p>
         </div>
 
-        <div id="schools_table_wrap">
+        <div class="panel-body flush table-wrap">
 
-            <table id="schools_table">
+            <table class="dash-table">
                 <thead>
                     <tr>
                         <th>school name</th>
@@ -182,13 +197,13 @@
                             <td class="school_name"><?php echo htmlspecialchars($school['name']); ?></td>
                             <td><?php echo htmlspecialchars($school['location']); ?></td>
                             <td><?php echo htmlspecialchars($school['principal']); ?></td>
-                            <td><?php echo htmlspecialchars(number_format($school['students'])); ?></td>
+                            <td class="num"><?php echo htmlspecialchars(number_format($school['students'])); ?></td>
                             <td>
-                                <span class="status_badge <?php echo ($school['status'] == 'active') ? 'status_active' : 'status_suspended'; ?>">
+                                <span class="chip <?php echo ($school['status'] == 'active') ? 'good' : 'warn'; ?>">
                                     <?php echo htmlspecialchars($school['status']); ?>
                                 </span>
                             </td>
-                            <td><?php echo htmlspecialchars($school['date_registered']); ?></td>
+                            <td class="num"><?php echo htmlspecialchars($school['date_registered']); ?></td>
                             <td class="action_cell">
                                 <button type="button" class="view_btn nav_soon_btn">view</button>
 
@@ -216,28 +231,34 @@
 
     <!-- recent activity ..................................................... -->
 
-    <section id="activity_section">
+    <section class="panel">
 
-        <div class="section_head">
-            <h2>recent activity</h2>
-            <p>latest operations across the platform</p>
+        <div class="panel-head">
+            <div>
+                <h2>Recent activity</h2>
+                <p class="stat-hint">Latest operations across the platform</p>
+            </div>
         </div>
 
-        <ul id="activity_feed">
+        <div class="panel-body">
 
-            <?php foreach ($activity_feed as $item) { ?>
+            <ul class="activity-feed">
 
-                <li class="activity_item type_<?php echo htmlspecialchars($item['type']); ?>">
-                    <span class="activity_dot"></span>
-                    <div class="activity_text">
-                        <p class="activity_what"><?php echo $item['what']; // placeholder copy contains &#8358; entity ?></p>
-                        <p class="activity_when"><?php echo htmlspecialchars($item['when']); ?></p>
-                    </div>
-                </li>
+                <?php foreach ($activity_feed as $item) { ?>
 
-            <?php } ?>
+                    <li class="activity-item">
+                        <span class="activity-dot"></span>
+                        <div>
+                            <p class="activity-what"><?php echo $item['what']; // placeholder copy contains &#8358; entity ?></p>
+                            <p class="activity-when"><?php echo htmlspecialchars($item['when']); ?></p>
+                        </div>
+                    </li>
 
-        </ul>
+                <?php } ?>
+
+            </ul>
+
+        </div>
 
     </section>
 
@@ -292,12 +313,12 @@
                         if (data == 'suspended') {
 
                             btn.removeClass('suspend').addClass('activate').text('activate');
-                            row.find('.status_badge').removeClass('status_active').addClass('status_suspended').text('suspended');
+                            row.find('.chip').removeClass('good').addClass('warn').text('suspended');
 
                         }else if (data == 'activated') {
 
                             btn.removeClass('activate').addClass('suspend').text('suspend');
-                            row.find('.status_badge').removeClass('status_suspended').addClass('status_active').text('active');
+                            row.find('.chip').removeClass('warn').addClass('good').text('active');
 
                         }else{
 
@@ -338,7 +359,7 @@
 
                 var options = {
                     legend: {position: 'bottom'},
-                    colors: ['#5fcf80', '#2b7a4b'],
+                    colors: ['#7c3aed', '#5b21b6'],
                     areaOpacity: 0.15,
                     chartArea: {width: '85%', height: '70%'},
                     height: 280
@@ -363,7 +384,7 @@
 
                 var options = {
                     legend: {position: 'none'},
-                    colors: ['#5fcf80'],
+                    colors: ['#7c3aed'],
                     chartArea: {width: '85%', height: '70%'},
                     height: 280
                 };
@@ -392,6 +413,6 @@
 
 <?php
 
-    include('footer.php');
+    include('action_php/footer.php');
 
 ?>

@@ -24,7 +24,7 @@
                 <img src="../../image/school/logo.jpg" alt="Acadex logo">
             </div>
 
-            <h1>Acadex admin login</h1>
+            <h1>Acadex Super Admin</h1>
             <p class="sub">Log in to the super admin console.</p>
 
             <p class="js_alert" id="error"></p>
@@ -35,21 +35,23 @@
                     <input type="email" id="email" placeholder="you@example.com" required name="email">
                 </div>
 
-                <div class="field">
+                <!-- <div class="field">
                     <label for="user">User name</label>
                     <input type="text" id="user" class="user" placeholder="Enter your user name" required name="user_name">
-                </div>
+                </div> -->
 
-                <h2>acadex admin login</h2>
+                <!-- <h2>acadex admin login</h2> -->
 
-                <input type="email" id="email" placeholder="Enter Email" required name="email">
+                <!-- <input type="email" id="email" placeholder="Enter Email" required name="email"> -->
 
-                <input type="submit" name="submit" id="reg_btn" value="submit">
+                <!-- <input type="submit" name="submit" id="reg_btn" class="submit_btn"  value="submit"> -->
 
                 <input type="submit" name="submit" id="reg_btn" class="submit_btn" value="Log in">
             </form>
         </div>
-    </div>
+
+        <p class="page_footer">Acadex &middot; by Zorfts Technologies Ltd</p>
+    </main>
     <script>
 
 

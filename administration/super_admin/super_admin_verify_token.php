@@ -14,39 +14,29 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>acadex super admin login</title>
-    <link rel="stylesheet" href="../css/auth_css.css?v=1">
+    <link rel="stylesheet" href="css/super_admin_login_css.css">
     <script src="../../javascript/jquery.js"></script>
+    <link rel="stylesheet" href="../../webfonts/font.css">
 </head>
 <body>
-    <main class="page">
-        <div class="card">
-            <div class="icon_badge">
-                <img src="../../image/school/logo.jpg" alt="Acadex logo">
-            </div>
-
-            <h1>Acadex admin login</h1>
-            <p class="sub">Log in to the super admin console.</p>
-
-            <p class="js_alert" id="error"></p>
-
+    <div id="form_container">
+        <div class="form_element">
             <form method="POST" id="form">
-                <div class="field">
-                    <label for="email">Email address</label>
-                    <input type="email" id="email" placeholder="you@example.com" required name="email">
+
+                <div class="error">
+                    <p id="error"></p>
                 </div>
 
-                <div class="field">
-                    <label for="user">User name</label>
-                    <input type="text" id="user" class="user" placeholder="Enter your user name" required name="user_name">
+                <div class="brand">
+                    <img src="../../image/school/logo.jpg" alt="acadex logo">
                 </div>
 
                 <h2>acadex admin login</h2>
 
-                <input type="email" id="email" placeholder="Enter Email" required name="email">
+                <input type="text" id="user" class="code" placeholder="code" required name="code">
 
                 <input type="submit" name="submit" id="reg_btn" value="submit">
 
-                <input type="submit" name="submit" id="reg_btn" class="submit_btn" value="Log in">
             </form>
         </div>
     </div>
@@ -73,12 +63,9 @@
 
                 event.preventDefault();
 
-                var email = $('#email').val();
-                // var user = $('.user').val();
-                // var pwd = $('.pwd').val();
+                var code = $('.code').val();
 
-                // if (email == '' || user == '' || pwd == '') {
-                if (email == '') {
+                if (code == '') {
 
                     error_handler('please fill all provided.....');
 
@@ -86,23 +73,23 @@
 
                     $.ajax({
                         url: 'action_php/multipurpose_action.php',
-                        data: {action: 'super admin login', email: email,},
+                        data: {action: 'super admin verify login code', code: code,},
                         method: 'POST',
                         dataType: 'text',
                         beforeSend: function(){
 
-                            $('#reg_btn').val('Logging in......');
+                            $('#reg_btn').val('submiting........');
                             $('#reg_btn').attr('disabled', 'disabled');
                         },
 
                         success: function(data) {
 
-                            $('#reg_btn').val('Log in');
+                            $('#reg_btn').val('Submit');
                             $('#reg_btn').attr('disabled', false);
 
                             if (data == 'send') {
 
-                                window.location.assign("super_admin_verify_token.php");
+                                window.location.assign("super_admin_home.php");
                             }else{
 
                                 error_handler(data);
@@ -118,5 +105,6 @@
 
 
     </script>
+
 </body>
 </html>

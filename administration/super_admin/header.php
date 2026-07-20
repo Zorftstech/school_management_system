@@ -2,11 +2,12 @@
 
     session_start();
 
-    if (!isset($_SESSION['super_admin_id_code'])) {
+    if (!isset($_SESSION['super_admin_login_email'])) {
 
         header("location: super_admin_login.php");
         exit();
     }
+    
 
 
     // super admin identity (set by action_php/multipurpose_action.php on login)

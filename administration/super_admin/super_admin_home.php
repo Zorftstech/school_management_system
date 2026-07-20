@@ -19,7 +19,7 @@
         array('label' => 'Total Pupils',          'value' => 4815,      'note' => 'primary arm',         'icon' => '&#9998;'),
         array('label' => 'Total Parents',         'value' => 7932,      'note' => 'linked guardians',    'icon' => '&#9993;'),
         array('label' => 'Active Online Exams',   'value' => 37,        'note' => 'open right now',      'icon' => '&#9632;'),
-        array('label' => 'Fees Collected',        'value' => 184250000, 'note' => 'this session',        'icon' => '&#8358;', 'money' => true),
+        array('label' => 'Fees Collected',        'value' => 18425000, 'note' => 'this session',        'icon' => '&#8358;', 'money' => true),
         array('label' => 'Pending Approvals',     'value' => 9,         'note' => 'withdrawals + results', 'icon' => '&#9888;'),
         array('label' => 'Recent Registrations',  'value' => 143,       'note' => 'last 30 days',        'icon' => '&#10010;'),
     );

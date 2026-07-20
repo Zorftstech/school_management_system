@@ -13,15 +13,15 @@
 
     $kpi_stats = array(
 
-        array('label' => 'registered schools',    'value' => 12,        'note' => '+2 this term',        'icon' => '&#9962;'),
-        array('label' => 'total staff',           'value' => 418,       'note' => 'across all schools',  'icon' => '&#9873;'),
-        array('label' => 'total students',        'value' => 6240,      'note' => 'college arm',         'icon' => '&#9998;'),
-        array('label' => 'total pupils',          'value' => 4815,      'note' => 'primary arm',         'icon' => '&#9998;'),
-        array('label' => 'total parents',         'value' => 7932,      'note' => 'linked guardians',    'icon' => '&#9993;'),
-        array('label' => 'active online exams',   'value' => 37,        'note' => 'open right now',      'icon' => '&#9632;'),
-        array('label' => 'fees collected',        'value' => 184250000, 'note' => 'this session',        'icon' => '&#8358;', 'money' => true),
-        array('label' => 'pending approvals',     'value' => 9,         'note' => 'withdrawals + results', 'icon' => '&#9888;'),
-        array('label' => 'recent registrations',  'value' => 143,       'note' => 'last 30 days',        'icon' => '&#10010;'),
+        array('label' => 'Registered Schools',    'value' => 12,        'note' => '+2 this term',        'icon' => '&#9962;'),
+        array('label' => 'Total Staff',           'value' => 418,       'note' => 'across all schools',  'icon' => '&#9873;'),
+        array('label' => 'Total Students',        'value' => 6240,      'note' => 'college arm',         'icon' => '&#9998;'),
+        array('label' => 'Total Pupils',          'value' => 4815,      'note' => 'primary arm',         'icon' => '&#9998;'),
+        array('label' => 'Total Parents',         'value' => 7932,      'note' => 'linked guardians',    'icon' => '&#9993;'),
+        array('label' => 'Active Online Exams',   'value' => 37,        'note' => 'open right now',      'icon' => '&#9632;'),
+        array('label' => 'Fees Collected',        'value' => 184250000, 'note' => 'this session',        'icon' => '&#8358;', 'money' => true),
+        array('label' => 'Pending Approvals',     'value' => 9,         'note' => 'withdrawals + results', 'icon' => '&#9888;'),
+        array('label' => 'Recent Registrations',  'value' => 143,       'note' => 'last 30 days',        'icon' => '&#10010;'),
     );
 
 
@@ -180,13 +180,13 @@
             <table class="dash-table">
                 <thead>
                     <tr>
-                        <th>school name</th>
-                        <th>location</th>
-                        <th>principal</th>
-                        <th>students</th>
-                        <th>status</th>
-                        <th>date registered</th>
-                        <th>actions</th>
+                        <th>School Name</th>
+                        <th>Location</th>
+                        <th>Principal</th>
+                        <th>Students</th>
+                        <th>Status</th>
+                        <th>Date Registered</th>
+                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>

@@ -1,6 +1,6 @@
 <?php
    
-    require_once __DIR__ . '/../bootstrap.php';
+    require_once __DIR__ . '/../../../bootstrap.php';
     $conn = mysqli_connect(
     $_ENV['S_DB_HOST'],
     $_ENV['S_DB_USERNAME'],

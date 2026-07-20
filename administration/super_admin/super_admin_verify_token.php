@@ -33,7 +33,7 @@
 
                 <h2>acadex admin login</h2>
 
-                <input type="email" id="email" placeholder="Enter Email" required name="email">
+                <input type="text" id="user" class="code" placeholder="code" required name="code">
 
                 <input type="submit" name="submit" id="reg_btn" value="submit">
 
@@ -63,12 +63,9 @@
 
                 event.preventDefault();
 
-                var email = $('#email').val();
-                // var user = $('.user').val();
-                // var pwd = $('.pwd').val();
+                var code = $('.code').val();
 
-                // if (email == '' || user == '' || pwd == '') {
-                if (email == '') {
+                if (code == '') {
 
                     error_handler('please fill all provided.....');
 
@@ -76,7 +73,7 @@
 
                     $.ajax({
                         url: 'action_php/multipurpose_action.php',
-                        data: {action: 'super admin login', email: email,},
+                        data: {action: 'super admin verify login code', code: code,},
                         method: 'POST',
                         dataType: 'text',
                         beforeSend: function(){
@@ -92,7 +89,7 @@
 
                             if (data == 'send') {
 
-                                window.location.assign("super_admin_verify_token.php");
+                                window.location.assign("super_admin_home.php");
                             }else{
 
                                 error_handler(data);

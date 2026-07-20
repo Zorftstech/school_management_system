@@ -3,13 +3,9 @@
     session_start();
 
     if (!isset($_SESSION['exam_user_names'])) {
-        
+
         header("location: exam_officer_login_form");
     }
-
-    
-
-
 
 ?>
 
@@ -20,79 +16,49 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <link rel="stylesheet" href="../../fontawesome/css/all.min.css">
-    <link rel="stylesheet" href="css/online_exam_login_css.css">
-
-    <script src="../../javascript/jquery.js"></script>
-    
     <title>pupils online exam login</title>
-
-    
+    <link rel="stylesheet" href="../css/auth_css.css?v=1">
+    <script src="../../javascript/jquery.js"></script>
 </head>
 <body>
+    <main class="page">
+        <div class="card">
+            <div class="icon_badge">
+                <img src="../../image/school/logo.jpg" alt="Acadex logo">
+            </div>
 
-    <section id="container">
-        <div id="school_name">
-            <h2>spring of  grace nursery & primary school</h2>
+            <h1>Online exam login</h1>
+            <p class="sub">Spring of Grace Nursery &amp; Primary School. Enter your admission number and password to begin.</p>
+
+            <?php if (isset($_GET['name'])): $name = $_GET['name']; ?>
+            <div class="alert success">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                </svg>
+                <span>Dear <?php echo htmlspecialchars($name); ?> you have successfully completed this examination, kindly go out without distracting others....</span>
+            </div>
+            <?php endif; ?>
+
+            <p class="js_alert" id="error_text"></p>
+
+            <form onsubmit="return false;">
+                <div class="field">
+                    <label for="addmission_num">Admission number</label>
+                    <input type="text" name="addmission_num" id="addmission_num" placeholder="Enter your admission number">
+                </div>
+
+                <div class="field">
+                    <label for="pwd">Password</label>
+                    <input type="password" name="pwd" id="pwd" placeholder="Enter your password">
+                </div>
+
+                <input type="submit" name="submit" id="submit" class="submit_btn" value="Log in">
+            </form>
         </div>
 
-        <div id="school_logo">
-            <div id="img">
-                <img src="../../image/school/logo.jpg" alt="">
-            </div>
-            <p>online exam login</p>
-        </div>
-
-        <div id="login_form">
-
-            <div id="error">
-                <span id="error_text"></span>
-
-                <?php
-
-                    if (isset($_GET['name'])) {
-                        $name = $_GET['name']
-
-                        ?>
-
-                            <span id="error_text" style="color: blue;">Dear <?php echo $name ?> you have successfully completed this examination, kindly go out without distracting others....</span>
-
-
-                        <?php
-                    }
-                
-                
-                ?>
-            </div>
-
-            <div class="student_addmission_num">
-                <label for="addmission_num">addmission nO</label>
-                <div class="addmission_num_input">
-                    <input type="text" name="addmission_num" id="addmission_num">
-                    <i class='fas fa-user-alt'></i>
-                </div>
-            </div>
-
-            <div class="student_addmission_num">
-                <div class="forgot">
-                    <label for="pwd">password</label>
-                    
-                </div>
-                <div class="addmission_num_input">
-                    <input type="password" name="pwd" id="pwd">
-                    <i class='fas fa-lock'></i>
-                </div>
-            </div>
-
-            <div id="login">
-                <div></div>
-                <input type="submit" name="submit" id="submit" value="login">
-            </div>
-
-
-        </div>
-    </section>
+        <p class="page_footer">Acadex &middot; by Zorfts Technologies Ltd</p>
+    </main>
 
     <script>
         $(document).ready(function(){
@@ -104,7 +70,7 @@
                 if (addmission_num == '' || pwd == '') {
 
                     $('#error_text').text('fill all the inputs');
-                    
+
                 }else{
                     $.ajax({
                         url: 'action_php/multipurpose_action.php',
@@ -112,19 +78,19 @@
                         method: 'POST',
                         dataType: 'text',
                         beforeSend: function(){
-                            $('#submit').val('loging......');
+                            $('#submit').val('Logging in......');
                             $('#submit').attr('disabled', 'disabled');
                         },
 
                         success: function(data){
-                            
-                            $('#submit').val('login');
+
+                            $('#submit').val('Log in');
                             $('#submit').attr('disabled', false);
 
                             if (data == 'active') {
 
                                 window.location.assign("pupil_online_exam_term_session_class_selection.php");
-                                
+
                             }else{
 
                                 $('#error_text').text(data);
@@ -141,6 +107,6 @@
             })
         })
     </script>
-    
+
 </body>
 </html>

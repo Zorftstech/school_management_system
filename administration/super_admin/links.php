@@ -16,7 +16,7 @@
         </li>
 
         <li class="side_link">
-            <a href="super_admin_home.php#schools_section"><i class="icon">&#9962;</i> schools</a>
+            <a href="onboard_school.php"><i class="icon">&#9962;</i> schools</a>
         </li>
 
         <li class="side_link nav_soon">

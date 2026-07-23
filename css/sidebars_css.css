@@ -1,60 +1,111 @@
-/* styling bar */
+/* ============================================================
+   Acadex marketing site — mobile drawer
+   ============================================================ */
 
-#sidebar{
-    background-color: rgba(0, 0, 0, 0.8);
+.mobile-drawer{
     position: fixed;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    z-index: 200;
+    inset: 0;
+    z-index: 800;
 }
 
-.siber_links{
-    position: fixed;
-    top: 50px;
-    left: 20px;
-    right: 20px;
-    bottom: 20px;
-    background-color: #fff;
-    padding: 30px;
-    border-radius: 5px;
-}
-
-.siber_links ul li{
-    margin-bottom: 20px;
-}
-
-.siber_links ul li a{
-    color: #444444;
-    font-size: 12px;
-    text-transform: capitalize;
-    font-weight: bolder;
-}
-
-.siber_links ul li:first-child a{
-    color: #8B008B;
-}
-
-.siber_links ul li a:hover{
-    color: #8B008B;
-}
-
-.close_btn{
-    float: right;
-    margin-right: 30px;
-    margin-top: 15px;
-}
-
-.close_btn h2 i{
-    color: #fff;
-    font-size: 15px;
-    cursor: pointer;
-}
-
-
-/* javascript class */
-
-.show{
+.mobile-drawer[hidden]{
     display: none;
+}
+
+.drawer-backdrop{
+    position: absolute;
+    inset: 0;
+    background: rgba(28, 17, 64, 0.5);
+    backdrop-filter: blur(2px);
+    opacity: 0;
+    transition: opacity .22s ease;
+}
+
+.drawer-panel{
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: min(360px, 88%);
+    background: #fff;
+    box-shadow: var(--shadow-lg);
+    padding: 20px 22px 28px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    transform: translateX(100%);
+    transition: transform .26s cubic-bezier(.16,.84,.44,1);
+}
+
+.mobile-drawer.open .drawer-backdrop{
+    opacity: 1;
+}
+
+.mobile-drawer.open .drawer-panel{
+    transform: translateX(0);
+}
+
+.drawer-top{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 18px;
+    border-bottom: 1px solid var(--border);
+}
+
+.drawer-close{
+    width: 40px;
+    height: 40px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: #fff;
+    color: var(--ink);
+    display: grid;
+    place-items: center;
+}
+
+.drawer-close:hover{
+    color: var(--purple-700);
+    border-color: var(--purple-400);
+}
+
+.drawer-nav{
+    display: flex;
+    flex-direction: column;
+    padding: 8px 0 4px;
+}
+
+.drawer-label{
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: var(--ink-muted);
+    font-weight: 700;
+    margin: 18px 0 6px;
+}
+
+.drawer-nav a{
+    padding: 11px 6px;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--ink);
+    border-radius: 8px;
+}
+
+.drawer-nav a:hover{
+    color: var(--purple-700);
+    background: var(--purple-50);
+}
+
+.drawer-actions{
+    margin-top: auto;
+    padding-top: 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+@media screen and (min-width: 1080px){
+    /* desktop nav takes over; drawer never shows */
+    .mobile-drawer{ display: none !important; }
 }

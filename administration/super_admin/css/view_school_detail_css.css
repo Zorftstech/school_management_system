@@ -1,0 +1,399 @@
+/*=========================================
+    VIEW SCHOOL DETAIL PAGE
+==========================================*/
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    background:#f5f7fb;
+}
+
+.page{
+
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    padding: 40px 15px;
+
+}
+
+.container{
+    max-width: 1170px;
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 35px;
+    box-shadow: 0 8px 25px rgba(0,0,0,.08);
+
+}
+
+.top_header{
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:15px;
+
+}
+
+.top_header h1{
+
+    color:#1b2b52;
+    font-size:32px;
+
+}
+
+.sub{
+
+    color:#666;
+    margin-bottom:30px;
+
+}
+
+.back_btn{
+
+    background:#0d6efd;
+    color:#fff;
+    padding:12px 22px;
+    border-radius:5px;
+    text-decoration:none;
+    transition:.3s;
+
+}
+
+.back_btn:hover{
+
+    background:#084298;
+
+}
+
+.loading{
+
+    text-align:center;
+    padding:80px;
+    font-size:18px;
+    color:#777;
+
+}
+
+.error_box{
+
+    background:#ffe5e5;
+    color:#cc0000;
+    padding:15px;
+    border-radius:6px;
+    text-align:center;
+
+}
+
+/*=========================================
+    SECTION
+==========================================*/
+
+.section{
+
+    background:#fff;
+    border-radius:8px;
+    padding:25px;
+    margin-bottom:30px;
+    box-shadow:0 5px 18px rgba(0,0,0,.08);
+
+}
+
+.section h2{
+
+    margin-bottom:20px;
+    color:#1b2b52;
+    border-left:5px solid #0d6efd;
+    padding-left:12px;
+
+}
+
+/*=========================================
+    TABLE
+==========================================*/
+
+.detail_table{
+
+    width:100%;
+    border-collapse:collapse;
+
+}
+
+.detail_table tr{
+
+    border-bottom:1px solid #ececec;
+
+}
+
+.detail_table td{
+
+    padding:15px;
+
+}
+
+.detail_table td:first-child{
+
+    width:280px;
+    font-weight:bold;
+    color:#444;
+
+}
+
+.detail_table td:last-child{
+
+    color:#666;
+
+}
+
+/*=========================================
+    STATISTICS
+==========================================*/
+
+.stats{
+
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:20px;
+
+}
+
+.stat_card{
+
+    background:#ffffff;
+    border-radius:8px;
+    box-shadow:0 5px 15px rgba(0,0,0,.08);
+    padding:25px;
+    text-align:center;
+    border-top:5px solid #0d6efd;
+
+}
+
+.stat_card h3{
+
+    color:#666;
+    margin-bottom:12px;
+    font-size:16px;
+
+}
+
+.stat_card h1{
+
+    font-size:40px;
+    color:#1b2b52;
+
+}
+
+/*=========================================
+    STATUS BADGES
+==========================================*/
+
+.active{
+
+    display:inline-block;
+    padding:6px 18px;
+    background:#198754;
+    color:#fff;
+    border-radius:30px;
+    font-size:14px;
+
+}
+
+.suspended{
+
+    display:inline-block;
+    padding:6px 18px;
+    background:#dc3545;
+    color:#fff;
+    border-radius:30px;
+    font-size:14px;
+
+}
+
+/*=========================================
+    ACTION BUTTONS
+==========================================*/
+
+.action_box{
+
+    margin-top:30px;
+    display:flex;
+    gap:15px;
+    flex-wrap:wrap;
+
+}
+
+.action_box button{
+
+    padding:13px 28px;
+    border:none;
+    cursor:pointer;
+    border-radius:6px;
+    color:#fff;
+    transition:.3s;
+
+}
+
+.activate_btn{
+
+    background:#198754;
+
+}
+
+.activate_btn:hover{
+
+    background:#157347;
+
+}
+
+.suspend_btn{
+
+    background:#dc3545;
+
+}
+
+.suspend_btn:hover{
+
+    background:#bb2d3b;
+
+}
+
+.refresh_btn{
+
+    background:#0d6efd;
+
+}
+
+.refresh_btn:hover{
+
+    background:#084298;
+
+}
+
+/*=========================================
+    DATABASE CARD
+==========================================*/
+
+.database_box{
+
+    background:#eef5ff;
+    border-left:5px solid #0d6efd;
+    padding:20px;
+    border-radius:6px;
+
+}
+
+.database_box p{
+
+    margin-bottom:12px;
+    color:#444;
+
+}
+
+.database_box strong{
+
+    color:#000;
+
+}
+
+/*=========================================
+    DIRECTOR PROFILE
+==========================================*/
+
+.profile{
+
+    display:flex;
+    align-items:center;
+    gap:25px;
+
+}
+
+.avatar{
+
+    width:90px;
+    height:90px;
+    border-radius:50%;
+    background:#0d6efd;
+    color:#fff;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:36px;
+    font-weight:bold;
+
+}
+
+.profile_info h3{
+
+    color:#1b2b52;
+    margin-bottom:10px;
+
+}
+
+.profile_info p{
+
+    margin-bottom:8px;
+    color:#555;
+
+}
+
+/*=========================================
+    RESPONSIVE
+==========================================*/
+
+@media(max-width:768px){
+
+    .page{
+
+        padding:15px;
+
+    }
+
+    .top_header{
+
+        flex-direction:column;
+        align-items:flex-start;
+        gap:15px;
+
+    }
+
+    .detail_table td{
+
+        display:block;
+        width:100%;
+        padding:10px;
+
+    }
+
+    .detail_table td:first-child{
+
+        font-weight:bold;
+        background:#f8f9fa;
+
+    }
+
+    .profile{
+
+        flex-direction:column;
+        text-align:center;
+
+    }
+
+    .action_box{
+
+        flex-direction:column;
+
+    }
+
+    .action_box button{
+
+        width:100%;
+
+    }
+
+}

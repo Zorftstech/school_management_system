@@ -11,7 +11,7 @@
 
     <ul id="sidebar_links">
 
-        <li class="side_link active">
+        <li class="side_link">
             <a href="super_admin_home.php"><i class="icon">&#9632;</i> dashboard</a>
         </li>
 
@@ -19,8 +19,8 @@
             <a href="onboard_school.php"><i class="icon">&#9962;</i> schools</a>
         </li>
 
-        <li class="side_link nav_soon">
-            <a href="#"><i class="icon">&#9873;</i> staff</a>
+        <li class="side_link">
+            <a href="schools_detail.php"><i class="icon">&#9873;</i> school detail</a>
         </li>
 
         <li class="side_link nav_soon">

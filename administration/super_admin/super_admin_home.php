@@ -13,15 +13,15 @@
 
     $kpi_stats = array(
 
-        array('label' => 'Registered Schools',    'value' => 12,        'note' => '+2 this term',        'icon' => '&#9962;'),
-        array('label' => 'Total Staff',           'value' => 418,       'note' => 'across all schools',  'icon' => '&#9873;'),
-        array('label' => 'Total Students',        'value' => 6240,      'note' => 'college arm',         'icon' => '&#9998;'),
-        array('label' => 'Total Pupils',          'value' => 4815,      'note' => 'primary arm',         'icon' => '&#9998;'),
-        array('label' => 'Total Parents',         'value' => 7932,      'note' => 'linked guardians',    'icon' => '&#9993;'),
-        array('label' => 'Active Online Exams',   'value' => 37,        'note' => 'open right now',      'icon' => '&#9632;'),
-        array('label' => 'Fees Collected',        'value' => 18425000, 'note' => 'this session',        'icon' => '&#8358;', 'money' => true),
-        array('label' => 'Pending Approvals',     'value' => 9,         'note' => 'withdrawals + results', 'icon' => '&#9888;'),
-        array('label' => 'Recent Registrations',  'value' => 143,       'note' => 'last 30 days',        'icon' => '&#10010;'),
+        array('label' => 'registered schools',    'value' => 12,        'note' => '+2 this term',        'icon' => '&#9962;'),
+        array('label' => 'total staff',           'value' => 418,       'note' => 'across all schools',  'icon' => '&#9873;'),
+        array('label' => 'total students',        'value' => 6240,      'note' => 'college arm',         'icon' => '&#9998;'),
+        array('label' => 'total pupils',          'value' => 4815,      'note' => 'primary arm',         'icon' => '&#9998;'),
+        array('label' => 'total parents',         'value' => 7932,      'note' => 'linked guardians',    'icon' => '&#9993;'),
+        array('label' => 'active online exams',   'value' => 37,        'note' => 'open right now',      'icon' => '&#9632;'),
+        array('label' => 'fees collected',        'value' => 184250000, 'note' => 'this session',        'icon' => '&#8358;', 'money' => true),
+        array('label' => 'pending approvals',     'value' => 9,         'note' => 'withdrawals + results', 'icon' => '&#9888;'),
+        array('label' => 'recent registrations',  'value' => 143,       'note' => 'last 30 days',        'icon' => '&#10010;'),
     );
 
 
@@ -81,34 +81,27 @@
     // ============================ END PLACEHOLDER ===============================
 
 
-    $page_title = 'Overview';
-
-    include('action_php/header.php');
-
-
-    // does any of the platform-wide data below come from a sample fallback?.....
-
-    $any_sample = true; // this whole page is placeholder data pending the multi-tenant backend
+    include('header.php');
 
 ?>
 
 
-    <?php if ($any_sample): ?>
-        <p class="page-intro"><span class="sample-badge">sample data</span> &nbsp;Every figure below is a placeholder — it will switch to live, per-school records once the multi-tenant backend lands.</p>
-    <?php endif; ?>
-
-
     <!-- kpi stats .......................................................... -->
 
-    <section class="stat-grid">
+    <section id="kpi_section">
 
-        <?php foreach ($kpi_stats as $stat) { ?>
+        <div class="section_head">
+            <h2>platform stats</h2>
+            <p>live totals across every registered school</p>
+        </div>
 
-            <article class="stat-card">
-                <div class="stat-icon"><?php echo $stat['icon']; ?></div>
-                <div>
-                    <p class="stat-label"><?php echo htmlspecialchars($stat['label']); ?></p>
-                    <h3 class="stat-value">
+        <div id="kpi_grid">
+
+            <?php foreach ($kpi_stats as $stat) { ?>
+
+                <div class="kpi_card">
+                    <span class="kpi_icon"><?php echo $stat['icon']; ?></span>
+                    <p class="kpi_value">
                         <?php
 
                             if (isset($stat['money'])) {
@@ -119,74 +112,66 @@
                                 echo htmlspecialchars(number_format($stat['value']));
                             }
                         ?>
-                    </h3>
-                    <p class="stat-hint"><?php echo htmlspecialchars($stat['note']); ?></p>
+                    </p>
+                    <p class="kpi_label"><?php echo htmlspecialchars($stat['label']); ?></p>
+                    <p class="kpi_note"><?php echo htmlspecialchars($stat['note']); ?></p>
                 </div>
-            </article>
 
-        <?php } ?>
+            <?php } ?>
+
+        </div>
 
     </section>
 
 
     <!-- charts .............................................................. -->
 
-    <div class="panel-grid">
+    <section id="charts_section">
 
-        <section class="panel">
-            <div class="panel-head">
-                <div>
-                    <h2>Enrollment growth</h2>
-                    <p class="stat-hint">Students and pupils per academic session</p>
-                </div>
+        <div class="chart_card">
+            <div class="section_head">
+                <h2>enrollment growth</h2>
+                <p>students and pupils per academic session</p>
             </div>
-            <div class="panel-body">
-                <div id="enrollment_chart"></div>
-            </div>
-        </section>
+            <div id="enrollment_chart"></div>
+        </div>
 
-        <section class="panel">
-            <div class="panel-head">
-                <div>
-                    <h2>Revenue trend</h2>
-                    <p class="stat-hint">Fees collected per term, current session</p>
-                </div>
+        <div class="chart_card">
+            <div class="section_head">
+                <h2>revenue trend</h2>
+                <p>fees collected per term, current session</p>
             </div>
-            <div class="panel-body">
-                <div id="revenue_chart"></div>
-            </div>
-        </section>
+            <div id="revenue_chart"></div>
+        </div>
 
-    </div>
+    </section>
 
 
     <!-- schools management .................................................. -->
 
-    <section id="schools_section" class="panel">
+    <section id="schools_section">
 
-        <div class="panel-head">
-            <div>
-                <h2>Registered schools</h2>
-                <p class="stat-hint">Suspend or reactivate a school, or open its detail view</p>
-            </div>
+        <div class="section_head">
+            <h2>registered schools</h2>
+            <p>suspend or reactivate a school, or open its detail view</p>
         </div>
 
         <div class="error">
             <p id="error"></p>
         </div>
 
-        <div class="panel-body flush table-wrap">
+        <div id="schools_table_wrap">
 
-            <table class="dash-table">
+            <table id="schools_table">
                 <thead>
                     <tr>
-                        <th>School Name</th>
-                        <th>Location</th>
-                        <th>Principal</th>
-                        <th>Students</th>
-                        <th>Status</th>
-                        <th>Date Registered</th>
-                        <th>Actions</th>
+                        <th>school name</th>
+                        <th>location</th>
+                        <th>principal</th>
+                        <th>students</th>
+                        <th>status</th>
+                        <th>date registered</th>
+                        <th>actions</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -197,13 +182,13 @@
                             <td class="school_name"><?php echo htmlspecialchars($school['name']); ?></td>
                             <td><?php echo htmlspecialchars($school['location']); ?></td>
                             <td><?php echo htmlspecialchars($school['principal']); ?></td>
-                            <td class="num"><?php echo htmlspecialchars(number_format($school['students'])); ?></td>
+                            <td><?php echo htmlspecialchars(number_format($school['students'])); ?></td>
                             <td>
-                                <span class="chip <?php echo ($school['status'] == 'active') ? 'good' : 'warn'; ?>">
+                                <span class="status_badge <?php echo ($school['status'] == 'active') ? 'status_active' : 'status_suspended'; ?>">
                                     <?php echo htmlspecialchars($school['status']); ?>
                                 </span>
                             </td>
-                            <td class="num"><?php echo htmlspecialchars($school['date_registered']); ?></td>
+                            <td><?php echo htmlspecialchars($school['date_registered']); ?></td>
                             <td class="action_cell">
                                 <button type="button" class="view_btn nav_soon_btn">view</button>
 
@@ -231,34 +216,28 @@
 
     <!-- recent activity ..................................................... -->
 
-    <section class="panel">
+    <section id="activity_section">
 
-        <div class="panel-head">
-            <div>
-                <h2>Recent activity</h2>
-                <p class="stat-hint">Latest operations across the platform</p>
-            </div>
+        <div class="section_head">
+            <h2>recent activity</h2>
+            <p>latest operations across the platform</p>
         </div>
 
-        <div class="panel-body">
+        <ul id="activity_feed">
 
-            <ul class="activity-feed">
+            <?php foreach ($activity_feed as $item) { ?>
 
-                <?php foreach ($activity_feed as $item) { ?>
+                <li class="activity_item type_<?php echo htmlspecialchars($item['type']); ?>">
+                    <span class="activity_dot"></span>
+                    <div class="activity_text">
+                        <p class="activity_what"><?php echo $item['what']; // placeholder copy contains &#8358; entity ?></p>
+                        <p class="activity_when"><?php echo htmlspecialchars($item['when']); ?></p>
+                    </div>
+                </li>
 
-                    <li class="activity-item">
-                        <span class="activity-dot"></span>
-                        <div>
-                            <p class="activity-what"><?php echo $item['what']; // placeholder copy contains &#8358; entity ?></p>
-                            <p class="activity-when"><?php echo htmlspecialchars($item['when']); ?></p>
-                        </div>
-                    </li>
+            <?php } ?>
 
-                <?php } ?>
-
-            </ul>
-
-        </div>
+        </ul>
 
     </section>
 
@@ -313,12 +292,12 @@
                         if (data == 'suspended') {
 
                             btn.removeClass('suspend').addClass('activate').text('activate');
-                            row.find('.chip').removeClass('good').addClass('warn').text('suspended');
+                            row.find('.status_badge').removeClass('status_active').addClass('status_suspended').text('suspended');
 
                         }else if (data == 'activated') {
 
                             btn.removeClass('activate').addClass('suspend').text('suspend');
-                            row.find('.chip').removeClass('warn').addClass('good').text('active');
+                            row.find('.status_badge').removeClass('status_suspended').addClass('status_active').text('active');
 
                         }else{
 
@@ -359,7 +338,7 @@
 
                 var options = {
                     legend: {position: 'bottom'},
-                    colors: ['#7c3aed', '#5b21b6'],
+                    colors: ['#5fcf80', '#2b7a4b'],
                     areaOpacity: 0.15,
                     chartArea: {width: '85%', height: '70%'},
                     height: 280
@@ -384,7 +363,7 @@
 
                 var options = {
                     legend: {position: 'none'},
-                    colors: ['#7c3aed'],
+                    colors: ['#5fcf80'],
                     chartArea: {width: '85%', height: '70%'},
                     height: 280
                 };
@@ -413,6 +392,6 @@
 
 <?php
 
-    include('action_php/footer.php');
+    include('footer.php');
 
 ?>

@@ -32,7 +32,7 @@
             <ul>
                 <li><a href="index.php#modules">Features</a></li>
                 <li><a href="index.php#pricing">Pricing</a></li>
-                <li><a href="#" class="nav-soon" data-soon="Guided demos are launching soon — reach us via the Contact page.">Book a Demo</a></li>
+                <li><a href="contact.php">Book a Demo</a></li>
                 <li><a href="#" class="nav-soon" data-soon="Product documentation is coming soon.">Documentation</a></li>
             </ul>
         </div>

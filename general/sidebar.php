@@ -41,8 +41,8 @@
         </nav>
 
         <div class="drawer-actions">
-            <a href="#" class="btn btn-outline btn-block nav-soon" data-soon="Guided demos are launching soon — reach us through the Contact page in the meantime.">Book a demo</a>
-            <a href="#" class="btn btn-primary btn-block nav-soon" data-soon="Self-serve sign-up is launching soon — use Contact us and we'll set your school up.">Start Free Trial</a>
+            <a href="contact.php" class="btn btn-primary btn-block">Book a Demo</a>
+            <a href="#" class="btn btn-outline btn-block nav-soon" data-soon="Self-serve sign-up is launching soon — book a demo and we'll set your school up.">Start Free Trial</a>
         </div>
 
     </aside>

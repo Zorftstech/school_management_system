@@ -64,7 +64,7 @@
                         <div class="mega-cta">
                             <h4>See it running live</h4>
                             <p>Acadex already runs the full academic year for a real school, start to finish.</p>
-                            <a href="#" class="btn btn-outline on-dark btn-sm nav-soon" data-soon="Guided demos are launching soon — reach us through the Contact page in the meantime.">Book a demo</a>
+                            <a href="contact.php" class="btn btn-outline on-dark btn-sm">Book a demo</a>
                         </div>
 
                     </div>
@@ -125,7 +125,7 @@
                 </div>
             </div>
 
-            <a href="#" class="btn btn-primary btn-sm nav-soon" data-soon="Self-serve sign-up is launching soon — use Book a Demo or Contact us and we'll set your school up.">Start Free Trial</a>
+            <a href="contact.php" class="btn btn-primary btn-sm">Book a Demo</a>
         </div>
 
         <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="sidebar">

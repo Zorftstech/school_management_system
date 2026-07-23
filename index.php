@@ -50,16 +50,16 @@
                 <h1>Run your <span class="accent">whole school</span> on one platform.</h1>
 
                 <p class="hero-sub">
-                    Acadex connects admissions, attendance, online exams, results, fees and
-                    communication — with a dedicated portal for every role, from the director
-                    down to the student in the exam hall.
+                    Stop stitching together spreadsheets, paper registers and separate exam tools.
+                    Acadex runs your entire academic year — admissions, attendance, CBT exams,
+                    results and fees — in one connected system, with a secure portal for every role.
                 </p>
 
                 <div class="hero-cta">
-                    <a href="#" class="btn btn-primary nav-soon" data-soon="Self-serve sign-up is launching soon — use Book a Demo or Contact us and we'll set your school up.">Start Free Trial</a>
-                    <a href="#" class="btn btn-outline on-dark nav-soon" data-soon="Guided demos are launching soon — reach us through the Contact page in the meantime.">
+                    <a href="contact.php" class="btn btn-primary">Book a Demo</a>
+                    <a href="#how" class="btn btn-outline on-dark">
                         <svg class="icon" viewBox="0 0 24 24" style="width:18px;height:18px;"><circle cx="12" cy="12" r="9"/><path d="M10 9l5 3-5 3V9z" fill="currentColor" stroke="none"/></svg>
-                        Book a Demo
+                        See how it works
                     </a>
                 </div>
 
@@ -67,7 +67,7 @@
                     <div class="avatars">
                         <span>D</span><span>P</span><span>A</span><span>E</span>
                     </div>
-                    Built around 7 role portals working together in one system
+                    Already running the full academic year for a live pilot school
                 </div>
             </div>
 
@@ -161,6 +161,47 @@
         </div>
     </section>
 
+    <!-- ============================ PROBLEM ============================ -->
+    <section class="section bg-soft" id="problem">
+        <div class="wrap">
+            <div class="section-head center" data-reveal>
+                <span class="eyebrow">The problem</span>
+                <h2>Running a school on spreadsheets and paper is quietly costing you</h2>
+                <p>Scores live in one file, fees in another, attendance on a paper register — and none of it reconciles. Every term-end becomes a scramble that steals time from teaching and leadership.</p>
+            </div>
+
+            <div class="card-grid">
+
+                <div class="feature-card" data-reveal>
+                    <div class="feature-ico">
+                        <svg class="icon" viewBox="0 0 24 24"><rect x="4" y="4" width="7" height="7" rx="1"/><rect x="13" y="13" width="7" height="7" rx="1"/><path d="M11 7h4a2 2 0 012 2v4"/></svg>
+                    </div>
+                    <h3>Disconnected tools</h3>
+                    <p>Separate spreadsheets and registers for scores, fees and attendance mean the same data is keyed three times — and still never adds up.</p>
+                </div>
+
+                <div class="feature-card" data-reveal>
+                    <div class="feature-ico">
+                        <svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+                    </div>
+                    <h3>Days lost to compilation</h3>
+                    <p>Working out class positions and printing result sheets by hand eats days of staff time and invites the kind of errors parents notice first.</p>
+                </div>
+
+                <div class="feature-card" data-reveal>
+                    <div class="feature-ico">
+                        <svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.6 9.2a2.5 2.5 0 113.4 2.5V13"/><path d="M12 16.5v.01"/></svg>
+                    </div>
+                    <h3>No single source of truth</h3>
+                    <p>When the director asks how the term is really going, the answer takes a week of chasing officers for numbers that never quite match.</p>
+                </div>
+
+            </div>
+
+            <p class="pricing-foot" style="margin-top:28px;">Acadex replaces all of it with one connected system — here is how it fits together.</p>
+        </div>
+    </section>
+
     <!-- ============================ STATS ============================ -->
     <section class="section tight bg-ink">
         <div class="wrap">
@@ -201,7 +242,7 @@
                         <svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.2"/><path d="M5 20c0-3.3 3.1-5.5 7-5.5s7 2.2 7 5.5"/></svg>
                     </div>
                     <h3>Student Information</h3>
-                    <p>Register and edit students and pupils across both arms, sort them into classes, generate PINs and print detail sheets — all from the admin officer's hub.</p>
+                    <p>Onboard a whole session in an afternoon. Register and edit students and pupils across both arms, sort them into classes, generate PINs and print detail sheets — all from the admin officer's hub.</p>
                 </div>
 
                 <div class="feature-card" data-reveal>
@@ -209,7 +250,7 @@
                         <svg class="icon" viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M8 3v4M16 3v4M4 10h16M9 14l1.5 1.5L14 12"/></svg>
                     </div>
                     <h3>Attendance</h3>
-                    <p>Form masters take daily attendance for their class each term; staff attendance is recorded centrally. Daily and termly summaries roll up automatically.</p>
+                    <p>Retire the paper register for good. Form masters take daily attendance for their class each term while staff attendance is recorded centrally, and daily and termly summaries roll up automatically.</p>
                 </div>
 
                 <div class="feature-card" data-reveal>
@@ -217,7 +258,7 @@
                         <svg class="icon" viewBox="0 0 24 24"><path d="M8 3H6a2 2 0 00-2 2v14a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2h-2"/><rect x="8" y="2" width="8" height="4" rx="1"/><path d="M9 12l2 2 4-4"/></svg>
                     </div>
                     <h3>Examination &amp; Results</h3>
-                    <p>Enter CA and exam scores per class, compile results with per-subject class positions, route through academic-officer approval, and print result sheets as PDF.</p>
+                    <p>Turn days of result compilation into minutes. Enter CA and exam scores per class, compile results with per-subject class positions, route through academic-officer approval, and print result sheets as PDF.</p>
                 </div>
 
                 <div class="feature-card" data-reveal>
@@ -225,7 +266,7 @@
                         <svg class="icon" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 18l4 3M21 18l-4 3M8 9h8M8 13h5"/></svg>
                     </div>
                     <h3>Online Exams (CBT)</h3>
-                    <p>Create question banks, open and close exams, and let students sit randomized MCQs at the hall machine. Everything is auto-marked with results ready to print.</p>
+                    <p>Run exams that mark themselves. Create question banks, open and close exams, and let students sit randomized MCQs at the hall machine — every script auto-marked with results ready to print.</p>
                 </div>
 
                 <div class="feature-card" data-reveal>
@@ -233,7 +274,7 @@
                         <svg class="icon" viewBox="0 0 24 24"><path d="M12 3v18M17 6.5c0-1.4-2-2.5-5-2.5S7 5 7 6.5 9 9 12 9s5 1.1 5 2.5-2 2.5-5 2.5-5-1.1-5-2.5"/></svg>
                     </div>
                     <h3>Finance &amp; Fees</h3>
-                    <p>Generate class vouchers, set amounts, record payments, deposits and withdrawals — with principal approval on withdrawals and printable transaction PDFs.</p>
+                    <p>Know exactly where every naira sits. Generate class vouchers, set amounts, record payments, deposits and withdrawals — with principal approval on withdrawals and printable transaction PDFs.</p>
                 </div>
 
                 <div class="feature-card" data-reveal>
@@ -241,7 +282,7 @@
                         <svg class="icon" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h10"/><circle cx="19" cy="18" r="2.4"/></svg>
                     </div>
                     <h3>Reports &amp; Analytics</h3>
-                    <p>Academic officers get general, subject and class-level performance analytics across CA, exam and final results for both students and pupils.</p>
+                    <p>Answer &ldquo;how is the term going?&rdquo; in seconds. Academic officers get general, subject and class-level performance analytics across CA, exam and final results for both students and pupils.</p>
                 </div>
 
             </div>
@@ -318,7 +359,7 @@
     </section>
 
     <!-- ======================= HOW IT WORKS ======================= -->
-    <section class="section">
+    <section class="section" id="how">
         <div class="wrap">
             <div class="section-head center" data-reveal>
                 <span class="eyebrow">How it works</span>
@@ -498,7 +539,7 @@
                         <li><svg class="icon" viewBox="0 0 24 24"><path d="M5 12l4 4 10-10"/></svg> Result entry &amp; prints</li>
                         <li><svg class="icon" viewBox="0 0 24 24"><path d="M5 12l4 4 10-10"/></svg> Up to 3 role portals</li>
                     </ul>
-                    <a href="#" class="btn btn-outline btn-block nav-soon" data-soon="Guided demos are launching soon — reach us through the Contact page.">Book a demo</a>
+                    <a href="contact.php" class="btn btn-outline btn-block">Book a demo</a>
                 </div>
 
                 <div class="price-card featured" data-reveal>
@@ -513,7 +554,7 @@
                         <li><svg class="icon" viewBox="0 0 24 24"><path d="M5 12l4 4 10-10"/></svg> Finance, fees &amp; approvals</li>
                         <li><svg class="icon" viewBox="0 0 24 24"><path d="M5 12l4 4 10-10"/></svg> Performance analytics</li>
                     </ul>
-                    <a href="#" class="btn btn-primary btn-block nav-soon" data-soon="Self-serve sign-up is launching soon — use Book a Demo or Contact us and we'll set your school up.">Start free trial</a>
+                    <a href="contact.php" class="btn btn-primary btn-block">Book a demo</a>
                 </div>
 
                 <div class="price-card" data-reveal>
@@ -539,9 +580,9 @@
     <section class="section bg-soft">
         <div class="wrap">
             <div class="section-head center" data-reveal>
-                <span class="eyebrow">In their words</span>
-                <h2>What running on Acadex feels like</h2>
-                <p>Reflections from the roles that use it day to day.</p>
+                <span class="eyebrow">A day in each role</span>
+                <h2>What Acadex changes for the people who run your school</h2>
+                <p>Illustrative scenarios showing how each role uses Acadex day to day. Verified customer stories are on the way &mdash; <a href="contact.php">talk to us</a> to be an early reference school.</p>
             </div>
 
             <div class="quote-grid">
@@ -684,10 +725,10 @@
             <div class="cta-banner" data-reveal>
                 <span class="eyebrow on-dark">Ready when you are</span>
                 <h2>Ready to run your whole school on one platform?</h2>
-                <p>See Acadex handle the full academic year — from onboarding your team to printing results.</p>
+                <p>Book a 30-minute walkthrough and see Acadex handle a full academic year — from onboarding your team to printing results.</p>
                 <div class="hero-cta">
-                    <a href="#" class="btn btn-primary nav-soon" data-soon="Self-serve sign-up is launching soon — use Book a Demo or Contact us and we'll set your school up.">Start Free Trial</a>
-                    <a href="contact.php" class="btn btn-outline on-dark">Talk to us</a>
+                    <a href="contact.php" class="btn btn-primary">Book a Demo</a>
+                    <a href="#pricing" class="btn btn-outline on-dark">See pricing</a>
                 </div>
             </div>
         </div>

@@ -87,6 +87,7 @@
                         <div class="mock-stat primary">
                             <div class="label">Total Students</div>
                             <div class="value">1,740</div>
+                            
                             <div class="sub">Both arms · this session</div>
                         </div>
                         <div class="mock-stat">
@@ -274,7 +275,7 @@
                         <svg class="icon" viewBox="0 0 24 24"><path d="M12 3v18M17 6.5c0-1.4-2-2.5-5-2.5S7 5 7 6.5 9 9 12 9s5 1.1 5 2.5-2 2.5-5 2.5-5-1.1-5-2.5"/></svg>
                     </div>
                     <h3>Finance &amp; Fees</h3>
-                    <p>Know exactly where every naira sits. Generate class vouchers, set amounts, record payments, deposits and withdrawals — with principal approval on withdrawals and printable transaction PDFs.</p>
+                    <p>Generate class vouchers, set amounts, record payments, deposits and withdrawals — with principal approval on withdrawals and printable transaction PDFs.</p>
                 </div>
 
                 <div class="feature-card" data-reveal>
@@ -282,7 +283,7 @@
                         <svg class="icon" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h10"/><circle cx="19" cy="18" r="2.4"/></svg>
                     </div>
                     <h3>Reports &amp; Analytics</h3>
-                    <p>Answer &ldquo;how is the term going?&rdquo; in seconds. Academic officers get general, subject and class-level performance analytics across CA, exam and final results for both students and pupils.</p>
+                    <p>Academic officers get general, subject and class-level performance analytics across CA, exam and final results for both students and pupils.</p>
                 </div>
 
             </div>
@@ -359,7 +360,7 @@
     </section>
 
     <!-- ======================= HOW IT WORKS ======================= -->
-    <section class="section" id="how">
+    <section class="section">
         <div class="wrap">
             <div class="section-head center" data-reveal>
                 <span class="eyebrow">How it works</span>
@@ -539,7 +540,7 @@
                         <li><svg class="icon" viewBox="0 0 24 24"><path d="M5 12l4 4 10-10"/></svg> Result entry &amp; prints</li>
                         <li><svg class="icon" viewBox="0 0 24 24"><path d="M5 12l4 4 10-10"/></svg> Up to 3 role portals</li>
                     </ul>
-                    <a href="contact.php" class="btn btn-outline btn-block">Book a demo</a>
+                    <a href="#" class="btn btn-outline btn-block nav-soon" data-soon="Guided demos are launching soon — reach us through the Contact page.">Book a demo</a>
                 </div>
 
                 <div class="price-card featured" data-reveal>
@@ -554,7 +555,7 @@
                         <li><svg class="icon" viewBox="0 0 24 24"><path d="M5 12l4 4 10-10"/></svg> Finance, fees &amp; approvals</li>
                         <li><svg class="icon" viewBox="0 0 24 24"><path d="M5 12l4 4 10-10"/></svg> Performance analytics</li>
                     </ul>
-                    <a href="contact.php" class="btn btn-primary btn-block">Book a demo</a>
+                    <a href="#" class="btn btn-primary btn-block nav-soon" data-soon="Self-serve sign-up is launching soon — use Book a Demo or Contact us and we'll set your school up.">Start free trial</a>
                 </div>
 
                 <div class="price-card" data-reveal>
@@ -580,9 +581,9 @@
     <section class="section bg-soft">
         <div class="wrap">
             <div class="section-head center" data-reveal>
-                <span class="eyebrow">A day in each role</span>
-                <h2>What Acadex changes for the people who run your school</h2>
-                <p>Illustrative scenarios showing how each role uses Acadex day to day. Verified customer stories are on the way &mdash; <a href="contact.php">talk to us</a> to be an early reference school.</p>
+                <span class="eyebrow">In their words</span>
+                <h2>What running on Acadex feels like</h2>
+                <p>Reflections from the roles that use it day to day.</p>
             </div>
 
             <div class="quote-grid">
@@ -725,10 +726,10 @@
             <div class="cta-banner" data-reveal>
                 <span class="eyebrow on-dark">Ready when you are</span>
                 <h2>Ready to run your whole school on one platform?</h2>
-                <p>Book a 30-minute walkthrough and see Acadex handle a full academic year — from onboarding your team to printing results.</p>
+                <p>See Acadex handle the full academic year — from onboarding your team to printing results.</p>
                 <div class="hero-cta">
-                    <a href="contact.php" class="btn btn-primary">Book a Demo</a>
-                    <a href="#pricing" class="btn btn-outline on-dark">See pricing</a>
+                    <a href="#" class="btn btn-primary nav-soon" data-soon="Self-serve sign-up is launching soon — use Book a Demo or Contact us and we'll set your school up.">Start Free Trial</a>
+                    <a href="contact.php" class="btn btn-outline on-dark">Talk to us</a>
                 </div>
             </div>
         </div>

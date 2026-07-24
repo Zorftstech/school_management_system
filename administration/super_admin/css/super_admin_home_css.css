@@ -1,290 +1,320 @@
-/* super admin dashboard: kpi cards, charts, schools table, activity feed */
+/* super admin dashboard content: kpi cards, panels, charts, schools table, activity feed.
+   ported from the shared dashboard design system (administration/css/dashboard_css.css)
+   so the super admin home matches the rest of the Acadex dashboards. the tokens below are
+   copied from that file so this stylesheet stays self-contained on top of the shell
+   (super_admin_links_css.css). */
 
+:root{
+    --purple-700: #5b21b6;
+    --purple-600: #6d28d9;
+    --purple-500: #7c3aed;
+    --purple-100: #ede9fe;
+    --purple-50:  #f5f3ff;
 
-/* shared section headings ................................................ */
+    --ink:       #1f2330;
+    --ink-soft:  #5a6072;
+    --ink-muted: #8b90a0;
 
-.section_head{
-    margin-bottom: 18px;
+    --surface: #ffffff;
+    --border:  #e8e6f0;
+
+    --good-ink: #1f7a4d;
+    --good-bg:  #e7f5ec;
+    --warn-ink: #8a5b00;
+    --warn-bg:  #fbf0dc;
+
+    --radius: 12px;
+    --shadow: 0 1px 2px rgba(31, 35, 48, 0.05);
 }
 
-.section_head h2{
-    font-size: 16px;
-    text-transform: lowercase;
-    letter-spacing: 1px;
-    color: #0e1726;
-    font-weight: bold;
+
+/* intro / sample badge .................................................. */
+
+.page-intro{
+    color: var(--ink-soft);
+    font-size: 13px;
+    margin: 0 0 20px;
+    max-width: 640px;
 }
 
-.section_head p{
-    font-size: 12px;
-    text-transform: lowercase;
-    letter-spacing: 1px;
-    color: #7a8494;
-    margin-top: 4px;
+.sample-badge{
+    display: inline-block;
+    padding: 2px 9px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 500;
+    background-color: var(--warn-bg);
+    color: var(--warn-ink);
 }
 
-section{
-    margin-bottom: 35px;
-}
 
+/* kpi stat cards ........................................................ */
 
-/* kpi cards .............................................................. */
-
-#kpi_grid{
+.stat-grid{
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 15px;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 14px;
+    margin-bottom: 24px;
 }
 
-.kpi_card{
-    background-color: #fff;
-    border-radius: 10px;
-    padding: 18px 20px;
-    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
-    border-top: 3px solid #5fcf80;
+.stat-card{
+    background-color: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 16px;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
 }
 
-.kpi_icon{
-    display: inline-flex;
+.stat-icon{
+    width: 36px;
+    height: 36px;
+    border-radius: 9px;
+    background-color: var(--purple-100);
+    color: var(--purple-700);
+    display: flex;
     align-items: center;
     justify-content: center;
-    width: 32px;
-    height: 32px;
-    border-radius: 8px;
-    background-color: rgba(95, 207, 128, 0.15);
-    color: #2b7a4b;
-    font-size: 15px;
-    margin-bottom: 10px;
-}
-
-.kpi_value{
-    font-size: 22px;
-    color: #0e1726;
-    letter-spacing: 1px;
-    font-weight: bold;
-}
-
-.kpi_label{
-    font-size: 12px;
-    text-transform: lowercase;
-    letter-spacing: 1px;
-    color: #55606e;
-    margin-top: 4px;
-}
-
-.kpi_note{
-    font-size: 11px;
-    text-transform: lowercase;
-    letter-spacing: 1px;
-    color: #5fcf80;
-    margin-top: 6px;
-}
-
-
-/* charts ................................................................. */
-
-#charts_section{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 15px;
-}
-
-.chart_card{
-    background-color: #fff;
-    border-radius: 10px;
-    padding: 20px;
-    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
-}
-
-
-/* schools table .......................................................... */
-
-#schools_table_wrap{
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
-    overflow-x: auto;
-}
-
-#schools_table{
-    width: 100%;
-    border-collapse: collapse;
-    min-width: 820px;
-}
-
-#schools_table th{
-    text-align: left;
-    padding: 14px 16px;
-    background-color: #0e1726;
-    color: #fff;
-    font-size: 12px;
-    text-transform: lowercase;
-    letter-spacing: 1px;
-    font-weight: normal;
-    white-space: nowrap;
-}
-
-#schools_table td{
-    padding: 13px 16px;
-    font-size: 13px;
-    color: #2c3542;
-    text-transform: lowercase;
-    letter-spacing: 1px;
-    border-bottom: 1px solid #eef0ef;
-    white-space: nowrap;
-}
-
-#schools_table tbody tr:hover{
-    background-color: rgba(95, 207, 128, 0.06);
-}
-
-#schools_table tbody tr:last-child td{
-    border-bottom: none;
-}
-
-.status_badge{
-    display: inline-block;
-    padding: 3px 12px;
-    border-radius: 12px;
-    font-size: 11px;
-    letter-spacing: 1px;
-}
-
-.status_active{
-    background-color: rgba(95, 207, 128, 0.18);
-    color: #2b7a4b;
-}
-
-.status_suspended{
-    background-color: rgba(255, 99, 71, 0.15);
-    color: #c0392b;
-}
-
-.action_cell button{
-    border: none;
-    padding: 6px 14px;
-    border-radius: 12px;
-    font-size: 12px;
-    text-transform: lowercase;
-    letter-spacing: 1px;
-    cursor: pointer;
-    margin-right: 6px;
-}
-
-.action_cell button:focus{
-    outline: none;
-}
-
-.view_btn{
-    background-color: #eef0ef;
-    color: #2c3542;
-}
-
-.view_btn:hover{
-    background-color: #dfe3e0;
-}
-
-.toggle_btn.suspend{
-    background-color: rgba(255, 99, 71, 0.15);
-    color: #c0392b;
-}
-
-.toggle_btn.suspend:hover{
-    background-color: tomato;
-    color: #fff;
-}
-
-.toggle_btn.activate{
-    background-color: rgba(95, 207, 128, 0.18);
-    color: #2b7a4b;
-}
-
-.toggle_btn.activate:hover{
-    background-color: #5fcf80;
-    color: #fff;
-}
-
-
-/* activity feed .......................................................... */
-
-#activity_feed{
-    background-color: #fff;
-    border-radius: 10px;
-    padding: 10px 20px;
-    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
-}
-
-.activity_item{
-    display: flex;
-    align-items: flex-start;
-    padding: 14px 0;
-    border-bottom: 1px solid #eef0ef;
-}
-
-.activity_item:last-child{
-    border-bottom: none;
-}
-
-.activity_dot{
-    width: 10px;
-    height: 10px;
-    border-radius: 100%;
-    background-color: #5fcf80;
-    margin: 5px 14px 0 0;
     flex-shrink: 0;
 }
 
-.activity_item.type_alert .activity_dot{
-    background-color: tomato;
+.stat-label{
+    margin: 0;
+    font-size: 12px;
+    color: var(--ink-soft);
 }
 
-.activity_item.type_finance .activity_dot{
-    background-color: #f0a92e;
+.stat-value{
+    margin: 2px 0 0;
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--ink);
+    line-height: 1.2;
 }
 
-.activity_item.type_staff .activity_dot{
-    background-color: #4a90d9;
+.stat-hint{
+    margin: 2px 0 0;
+    font-size: 12px;
+    color: var(--ink-muted);
 }
 
-.activity_what{
+
+/* panels, tables, chips ................................................. */
+
+.panel-grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 16px;
+}
+
+.panel{
+    background-color: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    margin-bottom: 16px;
+    min-width: 0;
+}
+
+.panel-head{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 14px 18px;
+    border-bottom: 1px solid var(--border);
+}
+
+.panel-head h2{
+    font-size: 14px;
+    font-weight: 600;
+    margin: 0;
+    color: var(--ink);
+}
+
+.panel-body{
+    padding: 16px 18px;
+}
+
+.panel-body.flush{
+    padding: 0;
+}
+
+.table-wrap{
+    overflow-x: auto;
+}
+
+.dash-table{
+    width: 100%;
+    border-collapse: collapse;
     font-size: 13px;
-    text-transform: lowercase;
-    letter-spacing: 1px;
-    color: #2c3542;
 }
 
-.activity_when{
-    font-size: 11px;
-    text-transform: lowercase;
-    letter-spacing: 1px;
-    color: #9aa3b0;
-    margin-top: 3px;
+.dash-table th{
+    text-align: left;
+    padding: 10px 18px;
+    color: var(--ink-muted);
+    font-weight: 500;
+    font-size: 12px;
+    border-bottom: 1px solid var(--border);
+    white-space: nowrap;
+}
+
+.dash-table td{
+    padding: 10px 18px;
+    border-bottom: 1px solid var(--border);
+    color: var(--ink-soft);
+    vertical-align: top;
+}
+
+.dash-table td:first-child{
+    color: var(--ink);
+    font-weight: 500;
+}
+
+.dash-table tr:last-child td{
+    border-bottom: none;
+}
+
+.dash-table .num{
+    font-variant-numeric: tabular-nums;
+}
+
+.chip{
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 2px 9px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.chip::before{
+    content: "";
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: currentColor;
+}
+
+.chip.good{
+    background-color: var(--good-bg);
+    color: var(--good-ink);
+}
+
+.chip.warn{
+    background-color: var(--warn-bg);
+    color: var(--warn-ink);
 }
 
 
-/* error line above the schools table ..................................... */
+/* row action buttons .................................................... */
+
+.view_btn,
+.toggle_btn{
+    color: #fff;
+    border: none;
+    border-radius: 7px;
+    padding: 6px 12px;
+    font-size: 12.5px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.view_btn{
+    background-color: var(--purple-600);
+}
+
+.toggle_btn{
+    margin-left: 6px;
+}
+
+.toggle_btn.suspend{
+    background-color: #c0392b;
+}
+
+.toggle_btn.activate{
+    background-color: var(--purple-600);
+}
+
+.view_btn:hover,
+.toggle_btn:hover{
+    opacity: 0.85;
+}
+
+
+/* charts ................................................................ */
+
+#enrollment_chart,
+#revenue_chart{
+    min-height: 280px;
+}
+
+
+/* activity feed ......................................................... */
+
+.activity-feed{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.activity-item{
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border);
+}
+
+.activity-item:last-child{
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.activity-dot{
+    width: 8px;
+    height: 8px;
+    margin-top: 6px;
+    border-radius: 50%;
+    background-color: var(--purple-500);
+    flex-shrink: 0;
+}
+
+.activity-what{
+    margin: 0;
+    font-size: 13.5px;
+    color: var(--ink);
+}
+
+.activity-when{
+    margin: 3px 0 0;
+    font-size: 12px;
+    color: var(--ink-muted);
+}
+
+
+/* schools-table feedback line ........................................... */
 
 .error{
     margin-bottom: 12px;
 }
 
 .error #error{
-    color: tomato;
-    letter-spacing: 1px;
+    color: #b3341f;
     font-size: 13px;
-    text-transform: lowercase;
 }
 
 
-/* responsive ............................................................. */
+/* responsive ............................................................ */
 
 @media screen and (max-width: 900px){
 
-    #charts_section{
-        grid-template-columns: 1fr;
-    }
-
-    #kpi_grid{
+    .stat-grid{
         grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
     }
 }
